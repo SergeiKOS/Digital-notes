@@ -19,6 +19,8 @@ function App() {
     },
   ]);
 
+  
+
   const handleChange = (e, id) => {
     const { tagName, value } = e.target;
 
@@ -39,12 +41,33 @@ function App() {
     setNotes(notesCopy);
   };
 
+  const handleClick = (inputRef) => {
+    // if (window.getSelection) {
+    //   console.log(window.selectionEnd);
+    //   let selectedText = window.getSelection().getRangeAt(0);
+    //   console.log(selectedText);
+    // }
+    // if (inputRef.current.selectionStart === inputRef.current.selectionEnd) {
+    //   return;
+    // }
+    // inputRef.current.selectionStart 
+    
+    // let selected = input.value.slice(input.selectionStart, input.selectionEnd);
+    // input.setRangeText(`*${selected}*`); 
+    
+  
+    console.log("handleClick -> inputRef.current", inputRef.current.selectionStart )
+    console.log("handleClick -> inputRef.current", inputRef.current.selectionEnd )
+    console.log(inputRef.current )
+    // inputRef.current.focus()
+  };
+
   return (
     <div>
       <Header />
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         {notes.map((note) => (
-          <Note note={note} onChange={handleChange} key={note.id} />
+          <Note note={note} onChange={handleChange} onClick={handleClick} key={note.id} />
         ))}
       </div>
     </div>
