@@ -1,9 +1,9 @@
 import React from 'react'
 import {AddNoteBtn} from './AddNoteBtn'
 
-const AddNote = () => {
+const AddNote = ({onAddNote}) => {
   return (
-    <AddNoteBtn>+</AddNoteBtn>
+    <AddNoteBtn onClick={onAddNote}>+</AddNoteBtn>
   )
 }
 

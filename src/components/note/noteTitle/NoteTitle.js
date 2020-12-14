@@ -2,7 +2,7 @@ import { NoteHeader } from "./NoteTitleStyles";
 
 const NoteTitle = ({note: { title, id }, onChange }) => {
   return (
-    <NoteHeader onChange={(e) => onChange(e, id)} value={title} maxLength="20"/>
+    <NoteHeader onChange={(e) => onChange(e, false, id)} value={title} maxLength="20"/>
   )
 }
 

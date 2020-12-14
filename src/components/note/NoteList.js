@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import { NotesContainer, NoteCard } from "./NoteStyles";
 import NoteTitle from "./noteTitle/NoteTitle";
 import Quill from "./quill/Quill";
+import AddNote from "../../components/addNote";
 
-const Note = () => {
+const NoteList = () => {
   const [notes, setNotes] = useState([
     {
-      id: "1",
+      id: uuidv4(),
       title: "Title",
       text:
         "<h1>How to use this notes</h1> <p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p><h2>Hor keys:</h2><ul><li>Ctrl + b -> bold text</li></ul>",
     },
     {
-      id: "2",
+      id: uuidv4(),
       title: "Another Title",
       text:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, assumenda.",
     },
   ]);
-
-  const [addNote, setAddNote] = useState(false);
 
   useEffect(() => {
     const notes = JSON.parse(localStorage.getItem("userInput"));
@@ -54,21 +55,48 @@ const Note = () => {
       changeText(value, tagName);
     }
   };
+
+  const handleAddNote = () => {
+    setNotes([
+      ...notes,
+      {
+        id: uuidv4(),
+        title: "Another Title",
+        text:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, assumenda.",
+      },
+    ]);
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("If deleted data can't be restored.")) {
+      setNotes(notes.filter((note) => note.id !== id));
+    } else return;
+  };
+  
   return (
-    <NotesContainer>
-      {notes.map((note) => (
-        <NoteCard key={note.id}>
-          <NoteTitle
-            note={note}
-            onChange={handleChange}
-            value={"title"}
-            maxLength="20"
-          />
-          <Quill value={note.text} id={note.id} onChange={handleChange} />
-        </NoteCard>
-      ))}
-    </NotesContainer>
+    <>
+      <AddNote onAddNote={handleAddNote} />
+      <NotesContainer>
+        {notes.map((note) => (
+          <NoteCard key={note.id}>
+            <NoteTitle
+              note={note}
+              onChange={handleChange}
+              value={"title"}
+              maxLength="20"
+            />
+            <Quill
+              value={note.text}
+              id={note.id}
+              onChange={handleChange}
+              onDelete={handleDelete}
+            />
+          </NoteCard>
+        ))}
+      </NotesContainer>
+    </>
   );
 };
 
-export default Note;
+export default NoteList;
