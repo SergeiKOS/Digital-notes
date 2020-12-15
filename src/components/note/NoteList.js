@@ -10,16 +10,10 @@ const NoteList = () => {
   const [notes, setNotes] = useState([
     {
       id: uuidv4(),
-      title: "Title",
+      title: "Enter your title here",
       text:
-        "<h1>How to use this notes</h1> <p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p><h2>Hor keys:</h2><ul><li>Ctrl + b -> bold text</li></ul>",
-    },
-    {
-      id: uuidv4(),
-      title: "Another Title",
-      text:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, assumenda.",
-    },
+        "<h1>How to use this notes</h1> <p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p><h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li></ul>",
+    }
   ]);
 
   useEffect(() => {
@@ -61,9 +55,9 @@ const NoteList = () => {
       ...notes,
       {
         id: uuidv4(),
-        title: "Another Title",
+        title: "",
         text:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, assumenda.",
+          "",
       },
     ]);
   };
@@ -73,7 +67,7 @@ const NoteList = () => {
       setNotes(notes.filter((note) => note.id !== id));
     } else return;
   };
-  
+
   return (
     <>
       <AddNote onAddNote={handleAddNote} />

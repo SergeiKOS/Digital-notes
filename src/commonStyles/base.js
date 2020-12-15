@@ -1,13 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-// import { colors } from "./variables";
-// import { font } from "./variables";
-/* 
-  body {
-    font-family: 'Open Sans', sans-serif; 
-    font-weight: ${font.fontWeightMain};
-    font-size: ${font.fontMain};
-    color: ${colors.black};
-  } */
+import {colors} from '../commonStyles/variables'
+
 const GlobalStyle = createGlobalStyle`
   *,
   *::before,
@@ -16,11 +9,15 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-
+  
   html {
     box-sizing: border-box;
   }
-
+  
+  body {
+    font-family: sans-serif;
+    background-color: ${colors.light};
+  }
   
   .visually-hidden:not(:focus):not(:active),
   input[type="checkbox"].visually-hidden,

@@ -1,5 +1,6 @@
 .custom-quill {
   position: relative;
+  background-color: #def2f1;
 }
 
 .trash-icon-wrapper {
@@ -12,8 +13,6 @@
 .custom-quill .ql-container {
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
-  /* background: #00008b;
-  color: lightcyan; */
 }
 
 .custom-quill .ql-editor {
@@ -23,7 +22,11 @@
 
 .custom-quill .ql-toolbar.ql-snow {
   padding: 3px;
+  border: none;
+  border-bottom: 1px solid #ccc;
 }
+
+
 
 .custom-quill .ql-toolbar.ql-snow .ql-formats {
   margin: 0;
