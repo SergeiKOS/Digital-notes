@@ -11,4 +11,10 @@ export const AddNoteBtn = styled.button`
   color: ${colors.lightDark};
   background-color: #fff;
   border: none;
+
+  &:focus {
+    outline: none;
+    color: #fff;
+    background-color: ${colors.lightDark};
+  }
 `

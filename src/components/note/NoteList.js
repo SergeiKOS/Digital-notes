@@ -1,20 +1,15 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+
 
 import { NotesContainer, NoteCard } from "./NoteStyles";
 import NoteTitle from "./noteTitle/NoteTitle";
 import Quill from "./quill/Quill";
-import AddNote from "../../components/addNote";
+
+import { useContext } from "react";
+import GlobalContext from "../../GlobalContext";
 
 const NoteList = () => {
-  const [notes, setNotes] = useState([
-    {
-      id: uuidv4(),
-      title: "Enter your title here",
-      text:
-        "<h1>How to use this notes</h1> <p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p><h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li></ul>",
-    }
-  ]);
+  const {notes, setNotes} = useContext(GlobalContext)  
 
   useEffect(() => {
     const notes = JSON.parse(localStorage.getItem("userInput"));
@@ -50,17 +45,7 @@ const NoteList = () => {
     }
   };
 
-  const handleAddNote = () => {
-    setNotes([
-      ...notes,
-      {
-        id: uuidv4(),
-        title: "",
-        text:
-          "",
-      },
-    ]);
-  };
+
 
   const handleDelete = (id) => {
     if (window.confirm("If deleted data can't be restored.")) {
@@ -70,7 +55,7 @@ const NoteList = () => {
 
   return (
     <>
-      <AddNote onAddNote={handleAddNote} />
+      
       <NotesContainer>
         {notes.map((note) => (
           <NoteCard key={note.id}>

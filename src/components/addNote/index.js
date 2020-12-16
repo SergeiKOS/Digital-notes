@@ -1,9 +1,26 @@
 import React from 'react'
+import { useContext } from 'react';
+import { v4 as uuidv4 } from "uuid";
+import GlobalContext from '../../GlobalContext';
 import {AddNoteBtn} from './AddNoteBtn'
 
-const AddNote = ({onAddNote}) => {
+const AddNote = () => {
+  const {notes, setNotes} = useContext(GlobalContext)
+  
+  const handleAddNote = () => {
+    setNotes([
+      ...notes,
+      {
+        id: uuidv4(),
+        title: "",
+        text:
+          "",
+      },
+    ]);
+  };
+  
   return (
-    <AddNoteBtn onClick={onAddNote}>+</AddNoteBtn>
+    <AddNoteBtn onClick={handleAddNote}>+</AddNoteBtn>
   )
 }
 
