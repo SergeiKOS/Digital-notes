@@ -5,7 +5,6 @@ const Header = () => {
   return (
     <HeaderWrapper className="container">
       <Logo />
-      <button>Theme</button>
     </HeaderWrapper>
   );
 };
