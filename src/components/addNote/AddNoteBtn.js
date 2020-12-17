@@ -1,15 +1,16 @@
-import styled from 'styled-components'
-import {colors} from '../../commonStyles/variables'
+import styled from "styled-components";
+import { colors } from "../../commonStyles/variables";
 
 export const AddNoteBtn = styled.button`
   cursor: pointer;
-  font-size: 50px;
+  font-size: 60px;
+  font-weight: bold;
   line-height: 40px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
   font-family: serif;
-  color: ${colors.lightDark};
-  background-color: #fff;
+  background-color: ${colors.dark};
+  color: #fff;
   border: none;
 
   &:focus {
@@ -17,4 +18,8 @@ export const AddNoteBtn = styled.button`
     color: #fff;
     background-color: ${colors.lightDark};
   }
-`
+
+  &:hover {
+    color: lightgray;
+  }
+`;

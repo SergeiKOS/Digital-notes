@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import {colors} from '../commonStyles/variables'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -16,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: sans-serif;
-    background-color: ${colors.light};
+    
   }
   
   .visually-hidden:not(:focus):not(:active),

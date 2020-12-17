@@ -1,8 +1,8 @@
 import { NoteHeader } from "./NoteTitleStyles";
 
-const NoteTitle = ({note: { title, id }, onChange }) => {
+const NoteTitle = ({note: { title, id }, onChange, cardsAmount }) => {
   return (
-    <NoteHeader onChange={(e) => onChange(e, false, id)} value={title} maxLength="20"/>
+    <NoteHeader onChange={(e) => onChange(e, false, id)} value={title || `Card ${cardsAmount}`} maxLength="20"/>
   )
 }
 

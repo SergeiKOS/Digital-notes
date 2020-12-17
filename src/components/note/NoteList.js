@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-
-
+import { useEffect } from "react";
+  
 import { NotesContainer, NoteCard } from "./NoteStyles";
 import NoteTitle from "./noteTitle/NoteTitle";
 import Quill from "./quill/Quill";
@@ -9,7 +8,7 @@ import { useContext } from "react";
 import GlobalContext from "../../GlobalContext";
 
 const NoteList = () => {
-  const {notes, setNotes} = useContext(GlobalContext)  
+  const { notes, setNotes } = useContext(GlobalContext);
 
   useEffect(() => {
     const notes = JSON.parse(localStorage.getItem("userInput"));
@@ -45,8 +44,6 @@ const NoteList = () => {
     }
   };
 
-
-
   const handleDelete = (id) => {
     if (window.confirm("If deleted data can't be restored.")) {
       setNotes(notes.filter((note) => note.id !== id));
@@ -55,7 +52,6 @@ const NoteList = () => {
 
   return (
     <>
-      
       <NotesContainer>
         {notes.map((note) => (
           <NoteCard key={note.id}>
@@ -64,6 +60,7 @@ const NoteList = () => {
               onChange={handleChange}
               value={"title"}
               maxLength="20"
+              cardsAmount={notes.length}
             />
             <Quill
               value={note.text}
