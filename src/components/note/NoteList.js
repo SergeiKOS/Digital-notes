@@ -60,7 +60,6 @@ const NoteList = () => {
               onChange={handleChange}
               value={"title"}
               maxLength="20"
-              cardsAmount={notes.length}
             />
             <Quill
               value={note.text}
