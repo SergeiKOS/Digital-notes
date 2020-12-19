@@ -4,6 +4,7 @@
 }
 
 .trash-icon-wrapper {
+  border: none !important;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -11,6 +12,7 @@
 }
 
 .custom-quill .ql-container {
+  border: none;
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
 }
@@ -25,8 +27,6 @@
   border: none;
   border-bottom: 1px solid #ccc;
 }
-
-
 
 .custom-quill .ql-toolbar.ql-snow .ql-formats {
   margin: 0;
