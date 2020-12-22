@@ -1,11 +1,12 @@
-import {LogoType} from './LogoStyles'
+import { LogoType } from "./LogoStyles";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
     <LogoType>
-      DN
+      <Link to="/">DN</Link>
     </LogoType>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;
