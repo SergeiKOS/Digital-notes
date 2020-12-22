@@ -2,18 +2,17 @@ import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
 
 export const NotesContainer = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
   justify-content: space-around;
-  background-color: ${colors.light};
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   gap: 10px;
-  min-height: 100vh;
+  width: 100%;
 `;
 
 export const NoteCard = styled.article`
+  flex-shrink: 0;
   width: 300px;
   margin-bottom: 20px;
 `;

@@ -1,0 +1,43 @@
+.custom-quill {
+  position: relative;
+  background-color: #def2f1;
+}
+
+.trash-icon-wrapper {
+  border: none !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.custom-quill .ql-container {
+  border: none;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+.custom-quill .ql-editor {
+  padding: 8px;
+  height: 500px;
+}
+
+.custom-quill .ql-toolbar.ql-snow {
+  padding: 3px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.custom-quill .ql-toolbar.ql-snow .ql-formats {
+  margin: 0;
+}
+
+.custom-quill .ql-snow .ql-picker.ql-header {
+  padding: 0;
+  margin: 0;
+  width: 95px;
+}
+
+.custom-quill .ql-snow .ql-picker-label {
+  padding-left: 5px;
+}
