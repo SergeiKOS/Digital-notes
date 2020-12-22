@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from '../../../commonStyles/variables'
+import {colors} from '../../../../commonStyles/variables'
 
 export const NoteHeader = styled.input`
   font-weight: 600;

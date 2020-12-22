@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import NotFound from "./pages/NotFound/NotFound";
+import GlobalContext from "./GlobalContext";
+import NotFound from "./pages/notFound/NotFound";
 import Header from "./containers/header";
 import NoteList from "./components/note/NoteList";
-import GlobalContext from "./GlobalContext";
+import EditNote from './pages/editNote'
 
 function App() {
   const [notes, setNotes] = useState([
@@ -20,14 +21,14 @@ function App() {
       <div>
         <Header />
         <Switch>
-          {/* <Route path="/posts/:id">
-            <Posts />
-          </Route> */}
+          <Route path="/edit-note/:id">
+            <EditNote />
+          </Route>
           <Route path="/not-found">
             <NotFound />
           </Route>
           <Route exact path="/">
-            <NoteList /> {/*change to Home */}
+            <NoteList />
           </Route>
           <Redirect to="/not-found" />
         </Switch>

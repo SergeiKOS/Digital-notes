@@ -1,7 +1,7 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CustomQuillStyles.css";
-import {colors} from '../../../commonStyles/variables'
+import {colors} from '../../../../commonStyles/variables'
 
 import { IconContext } from "react-icons";
 import { IoMdTrash } from "react-icons/io";
