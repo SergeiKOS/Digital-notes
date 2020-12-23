@@ -13,7 +13,7 @@ const AddNote = () => {
       {
         id: uuidv4(),
         title: `Note ${notes.length + 1}`,
-        text: "",
+        text: "new text",
       },
     ]);
   };
