@@ -13,7 +13,7 @@ const NotesCategories = () => {
   return (
     <div>
       {getCategories().map((category) => (
-        <NotesCategory category={category} />
+        <NotesCategory category={category} key={`${category}id`}/>
       ))}
     </div>
   );
