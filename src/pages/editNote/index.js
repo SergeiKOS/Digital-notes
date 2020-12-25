@@ -1,11 +1,13 @@
-import NoteEditor from "../../components/note/noteEditor"
+import Header from "../../components/header";
+import NoteEditor from "../../components/note/noteEditor";
 
 const EditNote = () => {
   return (
-    <div>
-      <NoteEditor/>
-    </div>
-  )
-}
+    <>
+      <Header />
+      <NoteEditor />
+    </>
+  );
+};
 
-export default EditNote
+export default EditNote;

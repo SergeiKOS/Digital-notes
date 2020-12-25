@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import GlobalContext from "../../GlobalContext";
+import Header from "../../components/header";
 import NotesCategory from "../../components/notesCategory";
 
 const NotesCategories = () => {
@@ -11,11 +12,12 @@ const NotesCategories = () => {
   };
 
   return (
-    <div>
+    <>
+      <Header withButton={true} />
       {getCategories().map((category) => (
-        <NotesCategory category={category} key={`${category}id`}/>
+        <NotesCategory category={category} key={`${category}id`} />
       ))}
-    </div>
+    </>
   );
 };
 

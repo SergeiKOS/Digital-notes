@@ -19,7 +19,8 @@
 
 .custom-quill .ql-editor {
   padding: 8px;
-  height: 500px;
+  background-color: #2aafa9;
+  font-size: 16px;
 }
 
 .custom-quill .ql-toolbar.ql-snow {

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 
-const AddNote = () => {
+const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
 
   const handleAddCategory = () => {
@@ -28,4 +28,4 @@ const AddNote = () => {
   );
 };
 
-export default AddNote;
+export default AddCategory;

@@ -1,12 +1,12 @@
 import { HeaderWrapper } from "./HeaderStyles";
-import Logo from "../../components/logo";
-import AddNote from "../../components/addCategory";
+import Logo from "../logo";
+import AddCategory from "../addCategory";
 
-const Header = () => {
+const Header = ({ withButton = false }) => {
   return (
     <HeaderWrapper className="container">
       <Logo />
-      <AddNote />
+      {withButton && <AddCategory />}
     </HeaderWrapper>
   );
 };

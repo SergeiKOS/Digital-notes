@@ -24,12 +24,7 @@ const NoteEditor = () => {
     setNotes(notesCopy);
   };
 
-  return (
-    <div>
-      {/* <h1>{getNote().text}</h1> */}
-      <Quill note={getNote()} onChange={handleChange} />
-    </div>
-  );
+  return <Quill note={getNote()} onChange={handleChange} />;
 };
 
 export default NoteEditor;
