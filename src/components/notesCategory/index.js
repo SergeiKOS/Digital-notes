@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import GlobalContext from "../../GlobalContext";
 import {
   NotesCategoryContainer,
@@ -8,7 +9,7 @@ import {
 } from "./NotesCategoryStyles";
 
 const NotesCategory = ({ category }) => {
-  const { notes } = useContext(GlobalContext);
+  const { notes, setNotes } = useContext(GlobalContext);
 
   const getNotesFromCategory = () => {
     let notesCopy = [...notes];
@@ -24,16 +25,30 @@ const NotesCategory = ({ category }) => {
     return [...notesCopy];
   };
 
+  const handleAddNote = () => {
+    let notesCopy = [...notes];
+
+    setNotes([
+      ...notesCopy,
+      {
+        id: uuidv4(),
+        category: category,
+        text: "",
+      },
+    ]);
+  };
+
   return (
     <NotesCategoryContainer>
       <h2>{category}</h2>
+      <button onClick={handleAddNote}>Add note</button>
       <NotesTextList>
         {getNotesFromCategory().map((note) => (
-          <NotesTextItem key={note.id}>
-            <Link to={`/edit-note/${note.id}`}>
+          <Link to={`/edit-note/${note.id}`} key={note.id}>
+            <NotesTextItem>
               {note.text.replace(/(<([^>]+)>)/gi, "")}
-            </Link>
-          </NotesTextItem>
+            </NotesTextItem>
+          </Link>
         ))}
       </NotesTextList>
     </NotesCategoryContainer>

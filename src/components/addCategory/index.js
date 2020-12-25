@@ -21,8 +21,11 @@ const AddNote = () => {
     ]);
   };
 
-
-  return <AddCategoryBtn onClick={handleAddCategory} aria-label="send email">+</AddCategoryBtn>;
+  return (
+    <AddCategoryBtn onClick={handleAddCategory} aria-label="add category">
+      +
+    </AddCategoryBtn>
+  );
 };
 
 export default AddNote;
