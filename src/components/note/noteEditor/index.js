@@ -1,21 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import GlobalContext from "../../../GlobalContext";
-// import NoteTitle from './noteTitle/NoteTitle'
 import Quill from "./quill/Quill";
 
 const NoteEditor = () => {
   const { notes, setNotes } = useContext(GlobalContext);
   const { id } = useParams();
-
-  useEffect(() => {
-    const notes = JSON.parse(localStorage.getItem("userInput"));
-    if (notes) setNotes(JSON.parse(localStorage.getItem("userInput")));
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("userInput", JSON.stringify(notes));
-  }, [notes]);
 
   const getNote = () => {
     return notes.filter((note) => note.id === id)[0];

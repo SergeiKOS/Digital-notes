@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import GlobalContext from "../../GlobalContext";
 import { Link } from "react-router-dom";
+import GlobalContext from "../../GlobalContext";
 import {
   NotesCategoryContainer,
   NotesTextList,

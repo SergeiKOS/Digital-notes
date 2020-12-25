@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import GlobalContext from "./GlobalContext";
 import NotFound from "./pages/notFound/NotFound";
@@ -30,6 +30,16 @@ function App() {
       text: "Apples",
     },
   ]);
+
+  useEffect(() => {
+    const notes = JSON.parse(localStorage.getItem("userInput"));
+    if (notes) setNotes(JSON.parse(localStorage.getItem("userInput")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userInput", JSON.stringify(notes));
+  }, [notes]);
+  
   return (
     <GlobalContext.Provider value={{ notes, setNotes }}>
       <div>

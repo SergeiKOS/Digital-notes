@@ -1,6 +1,6 @@
 import { HeaderWrapper } from "./HeaderStyles";
 import Logo from "../../components/logo";
-import AddNote from "../../components/addNote";
+import AddNote from "../../components/addCategory";
 
 const Header = () => {
   return (
