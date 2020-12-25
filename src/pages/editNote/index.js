@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import NoteEditor from "../../components/note/noteEditor";
+import NoteEditor from "../../components/noteEditor";
 
 const EditNote = () => {
   return (

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import GlobalContext from "./GlobalContext";
 import NotFound from "./pages/notFound/NotFound";
+import Header from "./containers/header";
 import NotesCategories from "./pages/notesCategories";
 import EditNote from "./pages/editNote";
 
