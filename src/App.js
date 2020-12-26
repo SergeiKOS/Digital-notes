@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import NotFound from "./pages/NotFound/NotFound";
+import NotFound from "./pages/notFound";
 import Header from "./containers/header";
 import NoteList from "./components/note/NoteList";
 import GlobalContext from "./GlobalContext";
