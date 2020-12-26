@@ -38,23 +38,21 @@ function App() {
   useEffect(() => {
     localStorage.setItem("userInput", JSON.stringify(notes));
   }, [notes]);
-  
+
   return (
     <GlobalContext.Provider value={{ notes, setNotes }}>
-      <div>
-        <Switch>
-          <Route path="/edit-note/:id">
-            <EditNote />
-          </Route>
-          <Route path="/not-found">
-            <NotFound />
-          </Route>
-          <Route exact path="/">
-            <NotesCategories />
-          </Route>
-          <Redirect to="/not-found" />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/edit-note/:id">
+          <EditNote />
+        </Route>
+        <Route path="/not-found">
+          <NotFound />
+        </Route>
+        <Route exact path="/">
+          <NotesCategories />
+        </Route>
+        <Redirect to="/not-found" />
+      </Switch>
     </GlobalContext.Provider>
   );
 }
