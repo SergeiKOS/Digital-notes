@@ -5,13 +5,7 @@ export const NotesCategoryContainer = styled.div`
   border: 1px solid #000;
 `;
 
-export const NotesList = styled.ul`
+export const NotesWrapper = styled.div`
   border: 1px solid #000;
-  padding: 10px;
-`;
-
-export const NotesItem = styled.li`
-  background-color: lightsalmon;
-  margin-bottom: 10px;
   padding: 10px;
 `;

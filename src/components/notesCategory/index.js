@@ -5,9 +5,9 @@ import GlobalContext from "../../GlobalContext";
 import NotesCategoryName from "./notesCategoryName";
 import {
   NotesCategoryContainer,
-  NotesList,
-  NotesItem,
+  NotesWrapper,
 } from "./NotesCategoryStyles";
+import NotesItem from './notesItem'
 
 const NotesCategory = ({ category }) => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -43,13 +43,13 @@ const NotesCategory = ({ category }) => {
     <NotesCategoryContainer>
       <NotesCategoryName category={category} />
       <button onClick={handleAddNote}>Add note</button>
-      <NotesList>
+      <NotesWrapper>
         {getNotesFromCategory().map((note) => (
           <Link to={`/edit-note/${note.id}`} key={note.id}>
-            <NotesItem>{note.text.replace(/(<([^>]+)>)/gi, "")}</NotesItem>
+            <NotesItem text={note.text} id={note.id}/>
           </Link>
         ))}
-      </NotesList>
+      </NotesWrapper>
     </NotesCategoryContainer>
   );
 };
