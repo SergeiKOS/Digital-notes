@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
 
-export const AddNoteBtn = styled.button`
+export const AddCategoryBtn = styled.button`
   cursor: pointer;
   font-size: 60px;
   font-weight: bold;
