@@ -5,4 +5,5 @@ export const HeaderWrapper = styled.div`
   background-color: ${colors.dark};
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;

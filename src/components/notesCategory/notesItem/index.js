@@ -26,7 +26,7 @@ const Note = ({ text, id }) => {
     <NoteCard>
       <div>{textClean}</div>
       <div className="trash-icon-wrapper" onClick={(e) => handleDelete(e, id)}>
-        <IconContext.Provider value={{ color: colors.lightDark, size: "20px" }}>
+        <IconContext.Provider value={{ color: colors.red, size: "20px" }}>
           <IoMdTrash />
         </IconContext.Provider>
       </div>

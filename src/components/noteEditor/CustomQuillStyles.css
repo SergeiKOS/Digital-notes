@@ -1,11 +1,5 @@
 .custom-quill {
-  position: relative;
   background-color: #def2f1;
-  overflow: hidden;
-}
-
-.quill {
-  height: calc(100vh - 50px);
 }
 
 .custom-quill .ql-container {
@@ -17,6 +11,7 @@
 .custom-quill .ql-editor {
   padding: 8px;
   font-size: 16px;
+  height: calc(100vh - 135px);
 }
 
 .custom-quill .ql-toolbar.ql-snow {
@@ -37,4 +32,16 @@
 
 .custom-quill .ql-snow .ql-picker-label {
   padding-left: 5px;
+}
+
+.custom-quill-footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #17252a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trash-icon-wrapper {
+  cursor: pointer;
 }
