@@ -5,5 +5,10 @@ export const NoteCard = styled.div`
   margin-bottom: 10px;
   padding: 10px;
   overflow: hidden;
-  /* display: flex; */
+  display: flex;
+  justify-content: space-between;
+
+  & .trash-icon-wrapper {
+    cursor: pointer;
+  }
 `;

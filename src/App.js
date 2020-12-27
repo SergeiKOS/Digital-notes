@@ -30,13 +30,13 @@ const initialState = [
 ];
 
 function App() {
-  const [notes, setNotes] = useState(() => {
-    return JSON.parse(localStorage.getItem("userInput")) || initialState;
-  });
+  const [notes, setNotes] = useState(
+    () => JSON.parse(localStorage.getItem("userInput")) || initialState
+  );
 
-  useEffect(() => {
-    localStorage.setItem("userInput", JSON.stringify(notes));
-  }, [notes]);
+  useEffect(() => localStorage.setItem("userInput", JSON.stringify(notes)), [
+    notes,
+  ]);
 
   return (
     <GlobalContext.Provider value={{ notes, setNotes }}>

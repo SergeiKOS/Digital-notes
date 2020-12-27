@@ -8,14 +8,6 @@
   height: calc(100vh - 50px);
 }
 
-.trash-icon-wrapper {
-  border: none !important;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
-}
-
 .custom-quill .ql-container {
   border: none;
   border-bottom-left-radius: 0.5em;
