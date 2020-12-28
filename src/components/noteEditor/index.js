@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import GlobalContext from "../../GlobalContext";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { Prompt } from "react-router";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CustomQuillStyles.css";
@@ -9,11 +10,20 @@ import { IoMdTrash } from "react-icons/io";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 
-
 const NoteEditor = () => {
-  const [isSaves, setIsSaved] = useState(true)
+  const [isChanged, setIsChanged] = useState(false);
   const { notes, setNotes } = useContext(GlobalContext);
+  const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes);
   const { id } = useParams();
+  let history = useHistory();
+
+  useEffect(() => {
+    window.onbeforeunload = () => (isChanged ? "" : null);
+  }, [isChanged]);
+
+  useEffect(() => {
+    return () => (window.onbeforeunload = null);
+  }, []);
 
   const getNote = () => {
     return notes.filter((note) => note.id === id)[0];
@@ -29,8 +39,8 @@ const NoteEditor = () => {
         return note;
       }
     });
-    setIsSaved(false);
-    setNotes(notesCopy);
+    setIsChanged(true);
+    setCurrentNoteEditorState(notesCopy);
   };
 
   const handleDelete = (e, id) => {
@@ -39,18 +49,27 @@ const NoteEditor = () => {
       "Are you sure you would like to delete your note?"
     );
     if (confirmDelete) {
-      setNotes(notes.filter((note) => note.id !== id));
+      setIsChanged(false);
+      setTimeout(() => history.push("/"), 0);
+      setTimeout(() => setNotes(notes.filter((note) => note.id !== id)), 0);
     } else {
       return;
     }
   };
 
   const handleSave = () => {
-    setIsSaved(true);
-  }
+    setIsChanged(false);
+    setNotes(currentNoteEditorState);
+
+    setTimeout(() => history.push("/"), 0);
+  };
 
   return (
     <div className="custom-quill">
+      <Prompt
+        when={isChanged}
+        message="You have unsaved changes, are you sure you want to leave?"
+      />
       <ReactQuill
         theme="snow"
         value={getNote().text}
