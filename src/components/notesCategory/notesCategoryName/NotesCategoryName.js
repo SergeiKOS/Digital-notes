@@ -10,5 +10,7 @@ export const NotesHeader = styled.h2`
 `;
 
 export const NotesHeaderEdit = styled.button`
-  background-color: red;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
