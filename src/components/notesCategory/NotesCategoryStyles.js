@@ -9,3 +9,9 @@ export const NotesWrapper = styled.div`
   border: 1px solid #000;
   padding: 10px;
 `;
+
+export const AddNote = styled.button`
+ border: none;
+ background-color: transparent;
+ cursor: pointer;
+`;
