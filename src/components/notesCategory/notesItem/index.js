@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import GlobalContext from "../../../GlobalContext";
-import { NoteCard } from "./NoteStyles";
+import { NoteCard, NoteText } from "./NoteStyles";
 import { IoMdTrash } from "react-icons/io";
-import SvgIcon from '../../SvgIcon'
+import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
 
 const Note = ({ text, id }) => {
@@ -24,7 +24,7 @@ const Note = ({ text, id }) => {
 
   return (
     <NoteCard>
-      <div>{textClean}</div>
+      <NoteText>{textClean}</NoteText>
       <div className="trash-icon-wrapper" onClick={(e) => handleDelete(e, id)}>
         <SvgIcon color={colors.red} size={"20px"}>
           <IoMdTrash />

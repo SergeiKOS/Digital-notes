@@ -13,9 +13,14 @@ const NotesCategories = () => {
   return (
     <>
       <Header withButton={true} />
-      {getCategories().map((category) => (
-        <NotesCategory category={category} key={`${category}id`} />
-      ))}
+      <div
+        className="notes-category-wrapper"
+        style={{ display: "inline-flex" }}
+      >
+        {getCategories().map((category) => (
+          <NotesCategory category={category} key={`${category}id`} />
+        ))}
+      </div>
     </>
   );
 };
