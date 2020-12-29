@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import GlobalContext from "../../../GlobalContext";
 import { IoMdCreate } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
@@ -6,35 +6,51 @@ import { colors } from "../../../commonStyles/variables";
 import {
   NoteHeaderWrapper,
   NotesHeader,
+  NotesHeaderInput,
   NotesHeaderEdit,
 } from "./NotesCategoryName";
 
 const NotesCategoryName = ({ category }) => {
+  const [headerInput, setHeaderInput] = useState(false);
+  const [test, settest] = useState('0');
   const { notes, setNotes } = useContext(GlobalContext);
 
+  const inputRef = useRef(null)
+
   const handleEditCategoryName = () => {
-    let newCategoryName = prompt("Type new category name", category);
+    setHeaderInput(true)
+    settest(1)
+    setTimeout(()=>inputRef.current.focus(), 0)
+    // let newCategoryName = prompt("Type new category name", category);
 
-    if (typeof newCategoryName !== "string") {
-      return;
-    }
+    // if (typeof newCategoryName !== "string") {
+    //   return;
+    // }
 
-    let notesCopy = [...notes];
-    notesCopy = notesCopy.map((note) => {
-      if (note.category === category) {
-        note.category = newCategoryName;
-        return note;
-      } else {
-        return note;
-      }
-    });
+    // let notesCopy = [...notes];
+    // notesCopy = notesCopy.map((note) => {
+    //   if (note.category === category) {
+    //     note.category = newCategoryName;
+    //     return note;
+    //   } else {
+    //     return note;
+    //   }
+    // });
 
-    setNotes(notesCopy);
+    // setNotes(notesCopy);
   };
+
+  const handleFocusOut = () => {
+    setHeaderInput(false)
+  }
 
   return (
     <NoteHeaderWrapper>
-      <NotesHeader>{category}</NotesHeader>
+      {headerInput ? (
+        <NotesHeaderInput focusout={handleFocusOut} ref={inputRef}/>
+      ) : (
+        <NotesHeader>{category}</NotesHeader>
+      )}
       <NotesHeaderEdit
         onClick={handleEditCategoryName}
         aria-label="edit category"

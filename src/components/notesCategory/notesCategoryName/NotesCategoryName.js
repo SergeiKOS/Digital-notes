@@ -12,6 +12,7 @@ export const NotesHeader = styled.h2`
   margin-right: 16px;
   max-width: 242px;
 `;
+export const NotesHeaderInput = styled.input``;
 
 export const NotesHeaderEdit = styled.button`
   background-color: transparent;
