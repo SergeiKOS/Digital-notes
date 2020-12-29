@@ -2,9 +2,6 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import GlobalContext from "../../GlobalContext";
-import { IoMdAdd } from "react-icons/io";
-import SvgIcon from "../SvgIcon";
-import { colors } from "../../commonStyles/variables";
 import NotesCategoryName from "./notesCategoryName";
 import {
   NotesCategoryContainer,
@@ -48,9 +45,7 @@ const NotesCategory = ({ category }) => {
       <div className="notes-category-container-header">
         <NotesCategoryName category={category} />
         <AddNote onClick={handleAddNote} aria-label="add note">
-          <SvgIcon color={colors.dark} size={"25px"}>
-            <IoMdAdd />
-          </SvgIcon>
+          +
         </AddNote>
       </div>
       <NotesWrapper>

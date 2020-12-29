@@ -19,4 +19,5 @@ export const AddNote = styled.button`
  border: none;
  background-color: transparent;
  cursor: pointer;
+ font-size: 29px;
 `;
