@@ -7,7 +7,8 @@ export const NoteHeaderWrapper = styled.div`
 
 export const NotesHeader = styled.h2`
   color: ${colors.dark};
-  margin-right: 10px;
+  margin-right: 16px;
+  max-width: 242px;
 `;
 
 export const NotesHeaderEdit = styled.button`

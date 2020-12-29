@@ -45,12 +45,14 @@ const NotesCategory = ({ category }) => {
 
   return (
     <NotesCategoryContainer>
-      <NotesCategoryName category={category} />
-      <AddNote onClick={handleAddNote} aria-label="add note">
-        <SvgIcon color={colors.dark} size={"25px"}>
-          <IoMdAdd />
-        </SvgIcon>
-      </AddNote>
+      <div className="notes-category-container-header">
+        <NotesCategoryName category={category} />
+        <AddNote onClick={handleAddNote} aria-label="add note">
+          <SvgIcon color={colors.dark} size={"25px"}>
+            <IoMdAdd />
+          </SvgIcon>
+        </AddNote>
+      </div>
       <NotesWrapper>
         {getNotesFromCategory().map((note) => (
           <Link to={`/edit-note/${note.id}`} key={note.id}>
