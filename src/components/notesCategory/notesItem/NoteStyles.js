@@ -6,18 +6,27 @@ export const NoteCard = styled.div`
   margin-bottom: 10px;
   padding: 10px;
   font-size: 14px;
-  height: 112px;
+  max-height: 127px;
   overflow: hidden;
-  display: flex;
-  justify-content: space-between;
+
+  & .note-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
   & .trash-icon-wrapper {
     cursor: pointer;
+    align-self: flex-end;
   }
+`;
+
+export const NoteHeader = styled.h3`
+  font-weight: bold;
 `;
 
 export const NoteText = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
+  width: 240px;
 `;

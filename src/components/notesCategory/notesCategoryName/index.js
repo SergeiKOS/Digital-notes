@@ -35,7 +35,6 @@ const NotesCategoryName = ({ category }) => {
   return (
     <NoteHeaderWrapper>
       <NotesHeader>{category}</NotesHeader>
-
       <NotesHeaderEdit
         onClick={handleEditCategoryName}
         aria-label="edit category"

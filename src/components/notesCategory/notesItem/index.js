@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import GlobalContext from "../../../GlobalContext";
-import { NoteCard, NoteText } from "./NoteStyles";
+import { NoteCard, NoteText, NoteHeader } from "./NoteStyles";
 import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
 
-const Note = ({ text, id }) => {
+const NotesItem = ({ notesItem: {id, noteHeader, text} }) => {
   const { notes, setNotes } = useContext(GlobalContext);
 
   const textClean = text.replace(/(<([^>]+)>)/gi, "");
@@ -24,14 +24,20 @@ const Note = ({ text, id }) => {
 
   return (
     <NoteCard>
-      <NoteText>{textClean}</NoteText>
-      <div className="trash-icon-wrapper" onClick={(e) => handleDelete(e, id)}>
-        <SvgIcon color={colors.red} size={"20px"}>
-          <IoMdTrash />
-        </SvgIcon>
+      <div className="note-header-wrapper">
+        <NoteHeader>{noteHeader.slice(0, 100)}</NoteHeader>
+        <div
+          className="trash-icon-wrapper"
+          onClick={(e) => handleDelete(e, id)}
+        >
+          <SvgIcon color={colors.red} size={"20px"}>
+            <IoMdTrash />
+          </SvgIcon>
+        </div>
       </div>
+      <NoteText>{textClean.slice(0, 120)}</NoteText>
     </NoteCard>
   );
 };
 
-export default Note;
+export default NotesItem;

@@ -18,8 +18,7 @@ const NotesCategory = ({ category }) => {
     notesCopy = notesCopy.filter((note) => {
       if (note.category === category) {
         return {
-          category: note.category,
-          id: note.id,
+          ...note,
         };
       }
       return false;
@@ -35,6 +34,7 @@ const NotesCategory = ({ category }) => {
       {
         id: uuidv4(),
         category: category,
+        noteHeader: "",
         text: "",
       },
     ]);
@@ -51,7 +51,7 @@ const NotesCategory = ({ category }) => {
       <NotesWrapper>
         {getNotesFromCategory().map((note) => (
           <Link to={`/edit-note/${note.id}`} key={note.id}>
-            <NotesItem text={note.text} id={note.id} />
+            <NotesItem notesItem={note} />
           </Link>
         ))}
       </NotesWrapper>

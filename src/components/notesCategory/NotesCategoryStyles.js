@@ -6,6 +6,7 @@ export const NotesCategoryContainer = styled.div`
 
   & .notes-category-container-header {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
   }
 `;

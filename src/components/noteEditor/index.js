@@ -17,7 +17,6 @@ const NoteEditor = () => {
   const { notes, setNotes } = useContext(GlobalContext);
   const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes);
   const { id } = useParams();
-  let history = useHistory();
 
   useEffect(() => {
     window.onbeforeunload = () => (isChanged ? "" : null);

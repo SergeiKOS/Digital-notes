@@ -16,6 +16,7 @@ const AddCategory = () => {
       {
         id: uuidv4(),
         category: categoryName,
+        noteHeader: '',
         text: "",
       },
     ]);
