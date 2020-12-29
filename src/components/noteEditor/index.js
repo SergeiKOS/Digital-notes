@@ -5,8 +5,8 @@ import { Prompt } from "react-router";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./CustomQuillStyles.css";
-import { IconContext } from "react-icons";
 import { IoMdTrash } from "react-icons/io";
+import SvgIcon from "../SvgIcon";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 
@@ -80,9 +80,9 @@ const NoteEditor = () => {
           className="trash-icon-wrapper"
           onClick={(e) => handleDelete(e, id)}
         >
-          <IconContext.Provider value={{ color: colors.red, size: "40px" }}>
+          <SvgIcon color={colors.red} size={"40px"}>
             <IoMdTrash />
-          </IconContext.Provider>
+          </SvgIcon>
         </div>
         <Button onClick={handleSave}>Save</Button>
       </div>

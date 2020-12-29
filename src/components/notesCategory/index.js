@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import GlobalContext from "../../GlobalContext";
-import { IconContext } from "react-icons";
 import { IoMdAdd } from "react-icons/io";
+import SvgIcon from "../SvgIcon";
 import { colors } from "../../commonStyles/variables";
 import NotesCategoryName from "./notesCategoryName";
 import {
@@ -47,9 +47,9 @@ const NotesCategory = ({ category }) => {
     <NotesCategoryContainer>
       <NotesCategoryName category={category} />
       <AddNote onClick={handleAddNote} aria-label="add note">
-        <IconContext.Provider value={{ color: colors.dark, size: "25px" }}>
+        <SvgIcon color={colors.dark} size={"25px"}>
           <IoMdAdd />
-        </IconContext.Provider>
+        </SvgIcon>
       </AddNote>
       <NotesWrapper>
         {getNotesFromCategory().map((note) => (

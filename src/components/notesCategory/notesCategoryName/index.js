@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import GlobalContext from "../../../GlobalContext";
-import { IconContext } from "react-icons";
 import { IoMdCreate } from "react-icons/io";
-import {colors} from '../../../commonStyles/variables'
+import SvgIcon from "../../SvgIcon";
+import { colors } from "../../../commonStyles/variables";
 import {
   NoteHeaderWrapper,
   NotesHeader,
@@ -40,9 +40,9 @@ const NotesCategoryName = ({ category }) => {
         onClick={handleEditCategoryName}
         aria-label="edit category"
       >
-        <IconContext.Provider value={{ color: colors.dark, size: "20px" }}>
+        <SvgIcon color={colors.dark} size={"20px"}>
           <IoMdCreate />
-        </IconContext.Provider>
+        </SvgIcon>
       </NotesHeaderEdit>
     </NoteHeaderWrapper>
   );
