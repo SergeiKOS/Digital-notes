@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import GlobalContext from "../../GlobalContext";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Prompt } from "react-router";
 import { Redirect } from "react-router-dom";
 import ReactQuill from "react-quill";

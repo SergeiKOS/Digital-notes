@@ -6,21 +6,21 @@ import { colors } from "../../../commonStyles/variables";
 import {
   NoteHeaderWrapper,
   NotesHeader,
+  NotesHeaderForm,
   NotesHeaderInput,
   NotesHeaderEdit,
 } from "./NotesCategoryName";
 
 const NotesCategoryName = ({ category }) => {
+  const [userInputCategory, setUserInputCategory] = useState(category);
   const [headerInput, setHeaderInput] = useState(false);
-  const [test, settest] = useState('0');
   const { notes, setNotes } = useContext(GlobalContext);
 
-  const inputRef = useRef(null)
+  const inputRef = useRef(null);
 
   const handleEditCategoryName = () => {
-    setHeaderInput(true)
-    settest(1)
-    setTimeout(()=>inputRef.current.focus(), 0)
+    setHeaderInput(true);
+    setTimeout(() => inputRef.current.focus(), 0);
     // let newCategoryName = prompt("Type new category name", category);
 
     // if (typeof newCategoryName !== "string") {
@@ -40,24 +40,53 @@ const NotesCategoryName = ({ category }) => {
     // setNotes(notesCopy);
   };
 
-  const handleFocusOut = () => {
-    setHeaderInput(false)
-  }
+  const handleCategoryChange = (e) => {
+    console.log(e.target.value);
+    setUserInputCategory(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log("out");
+    setHeaderInput(false);
+    setNotes(
+      notes.map((note) =>
+        note.category === category
+          ? { ...note, category: userInputCategory }
+          : note
+      )
+    );
+  };
 
   return (
-    <NoteHeaderWrapper>
+    <NoteHeaderWrapper onClick={handleEditCategoryName}>
       {headerInput ? (
-        <NotesHeaderInput focusout={handleFocusOut} ref={inputRef}/>
+        <NotesHeaderForm
+          onSubmit={handleSubmit}
+          style={{ padding: 0, marginTop: "10px" }}
+        >
+          <NotesHeaderInput
+            value={userInputCategory}
+            onChange={handleCategoryChange}
+            onBlur={handleSubmit}
+            ref={inputRef}
+          />
+        </NotesHeaderForm>
       ) : (
-        <NotesHeader>{category}</NotesHeader>
+        <NotesHeader>
+          {userInputCategory}
+        </NotesHeader>
       )}
       <NotesHeaderEdit
         onClick={handleEditCategoryName}
         aria-label="edit category"
       >
-        <SvgIcon color={colors.dark} size={"20px"}>
-          <IoMdCreate />
-        </SvgIcon>
+        {headerInput ? (
+          ""
+        ) : (
+          <SvgIcon color={colors.dark} size={"20px"}>
+            <IoMdCreate />
+          </SvgIcon>
+        )}
       </NotesHeaderEdit>
     </NoteHeaderWrapper>
   );
