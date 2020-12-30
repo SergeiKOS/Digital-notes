@@ -15,11 +15,11 @@ import { colors } from "../../commonStyles/variables";
 const NoteEditor = () => {
   const [isChanged, setIsChanged] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const [userInputNoteTitle, setUserInputNoteTitle] = useState("");
-  const [headerInput, setHeaderInput] = useState(false);
+  const [userInputNoteTitle, setUserInputNoteTitle] = useState();
+  const [headerInput, setHeaderInput] = useState(true);
   const { notes, setNotes } = useContext(GlobalContext);
-  const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes);
   const { id } = useParams();
+  const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes.filter((note) => note.id === id)[0]);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -30,12 +30,12 @@ const NoteEditor = () => {
     return () => (window.onbeforeunload = null);
   }, []);
 
-  const getNote = () => {
-    return currentNoteEditorState.filter((note) => note.id === id)[0];
-  };
+  // const getNote = () => {
+  //   return currentNoteEditorState.filter((note) => note.id === id)[0];
+  // };
 
   const handleChange = (e) => {
-    let notesCopy = [...notes];
+    let notesCopy = [...currentNoteEditorState];
     notesCopy = notesCopy.map((note) => {
       if (note.id === id) {
         note.text = e;
@@ -72,6 +72,7 @@ const NoteEditor = () => {
   };
 
   const handleNoteHeaderChange = (e) => {
+    console.log(e.target.value);
     setUserInputNoteTitle(e.target.value);
   };
 
@@ -95,7 +96,7 @@ const NoteEditor = () => {
             style={{ padding: 0, marginTop: "10px" }}
           >
             <NoteHeaderInput
-              value={userInputNoteTitle}
+              value={currentNoteEditorState.noteHeader}
               onChange={handleNoteHeaderChange}
               onBlur={handleSubmit}
               ref={inputRef}
@@ -103,7 +104,7 @@ const NoteEditor = () => {
           </NoteHeaderForm>
         ) : (
           <NoteHeaderTitle onClick={handleEditHeaderName}>
-            {getNote().noteHeader}
+            {currentNoteEditorState.noteHeader}
           </NoteHeaderTitle>
         )}
 
@@ -114,7 +115,7 @@ const NoteEditor = () => {
           />
           <ReactQuill
             theme="snow"
-            value={getNote().text}
+            value={currentNoteEditorState.text}
             onChange={(e) => handleChange(e)}
           />
           <div className="custom-quill-footer">

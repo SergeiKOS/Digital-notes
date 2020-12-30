@@ -57,8 +57,8 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .App {
