@@ -21,32 +21,13 @@ const NotesCategoryName = ({ category }) => {
   const handleEditCategoryName = () => {
     setHeaderInput(true);
     setTimeout(() => inputRef.current.focus(), 0);
-    // let newCategoryName = prompt("Type new category name", category);
-
-    // if (typeof newCategoryName !== "string") {
-    //   return;
-    // }
-
-    // let notesCopy = [...notes];
-    // notesCopy = notesCopy.map((note) => {
-    //   if (note.category === category) {
-    //     note.category = newCategoryName;
-    //     return note;
-    //   } else {
-    //     return note;
-    //   }
-    // });
-
-    // setNotes(notesCopy);
   };
 
   const handleCategoryChange = (e) => {
-    console.log(e.target.value);
     setUserInputCategory(e.target.value);
   };
 
   const handleSubmit = () => {
-    console.log("out");
     setHeaderInput(false);
     setNotes(
       notes.map((note) =>
@@ -72,9 +53,7 @@ const NotesCategoryName = ({ category }) => {
           />
         </NotesHeaderForm>
       ) : (
-        <NotesHeader>
-          {userInputCategory}
-        </NotesHeader>
+        <NotesHeader>{userInputCategory}</NotesHeader>
       )}
       <NotesHeaderEdit
         onClick={handleEditCategoryName}

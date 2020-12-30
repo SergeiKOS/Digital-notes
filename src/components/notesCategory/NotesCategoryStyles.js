@@ -15,6 +15,7 @@ export const NotesCategoryContainer = styled.div`
 export const NotesWrapper = styled.div`
   background-color: #62c9c4;
   padding: 10px;
+  padding-bottom: 1px;
 `;
 
 export const AddNote = styled.button`

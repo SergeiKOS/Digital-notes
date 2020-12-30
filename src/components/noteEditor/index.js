@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import GlobalContext from "../../GlobalContext";
 import { useParams } from "react-router-dom";
 import { Prompt } from "react-router";
@@ -8,15 +8,19 @@ import "react-quill/dist/quill.snow.css";
 import "./CustomQuillStyles.css";
 import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../SvgIcon";
+import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 
 const NoteEditor = () => {
   const [isChanged, setIsChanged] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const [userInputNoteTitle, setUserInputNoteTitle] = useState("");
+  const [headerInput, setHeaderInput] = useState(false);
   const { notes, setNotes } = useContext(GlobalContext);
   const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes);
   const { id } = useParams();
+  const inputRef = useRef(null);
 
   useEffect(() => {
     window.onbeforeunload = () => (isChanged ? "" : null);
@@ -27,7 +31,7 @@ const NoteEditor = () => {
   }, []);
 
   const getNote = () => {
-    return notes.filter((note) => note.id === id)[0];
+    return currentNoteEditorState.filter((note) => note.id === id)[0];
   };
 
   const handleChange = (e) => {
@@ -62,32 +66,70 @@ const NoteEditor = () => {
     setRedirect(true);
   };
 
+  const handleEditHeaderName = () => {
+    setHeaderInput(true);
+    setTimeout(() => inputRef.current.focus(), 0);
+  };
+
+  const handleNoteHeaderChange = (e) => {
+    setUserInputNoteTitle(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    setHeaderInput(false);
+    setCurrentNoteEditorState(
+      notes.map((note) =>
+        note.id === id ? { ...note, noteHeader: userInputNoteTitle } : note
+      )
+    );
+  };
+
   if (redirect) {
     return <Redirect to="/" />;
   } else {
     return (
-      <div className="custom-quill">
-        <Prompt
-          when={isChanged}
-          message="You have unsaved changes, are you sure you want to leave?"
-        />
-        <ReactQuill
-          theme="snow"
-          value={getNote().text}
-          onChange={(e) => handleChange(e)}
-        />
-        <div className="custom-quill-footer">
-          <div
-            className="trash-icon-wrapper"
-            onClick={(e) => handleDelete(e, id)}
+      <>
+        {headerInput ? (
+          <NoteHeaderForm
+            onSubmit={handleSubmit}
+            style={{ padding: 0, marginTop: "10px" }}
           >
-            <SvgIcon color={colors.red} size={"40px"}>
-              <IoMdTrash />
-            </SvgIcon>
+            <NoteHeaderInput
+              value={userInputNoteTitle}
+              onChange={handleNoteHeaderChange}
+              onBlur={handleSubmit}
+              ref={inputRef}
+            />
+          </NoteHeaderForm>
+        ) : (
+          <NoteHeaderTitle onClick={handleEditHeaderName}>
+            {getNote().noteHeader}
+          </NoteHeaderTitle>
+        )}
+
+        <div className="custom-quill">
+          <Prompt
+            when={isChanged}
+            message="You have unsaved changes, are you sure you want to leave?"
+          />
+          <ReactQuill
+            theme="snow"
+            value={getNote().text}
+            onChange={(e) => handleChange(e)}
+          />
+          <div className="custom-quill-footer">
+            <div
+              className="trash-icon-wrapper"
+              onClick={(e) => handleDelete(e, id)}
+            >
+              <SvgIcon color={colors.red} size={"40px"}>
+                <IoMdTrash />
+              </SvgIcon>
+            </div>
+            <Button onClick={handleSave}>Save</Button>
           </div>
-          <Button onClick={handleSave}>Save</Button>
         </div>
-      </div>
+      </>
     );
   }
 };
