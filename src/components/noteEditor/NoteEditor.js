@@ -5,12 +5,11 @@ export const NoteHeaderTitle = styled.h1`
   padding-right: 8px;
   padding-bottom: 3px;
   cursor: pointer;
-  min-height: 40px;
 `;
 
 export const NoteHeaderForm = styled.form`
-  height: 40px;
   margin-top: 0;
+  padding: 0;
 `;
 
 export const NoteHeaderInput = styled.input`
@@ -21,7 +20,7 @@ export const NoteHeaderInput = styled.input`
   font-size: 32px;
   font-weight: bold;
   background: transparent;
-  padding: 3px 10px 7px 10px;
+  padding: 3px 10px 7px 8px;
 
   &:focus {
     border: none;

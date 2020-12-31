@@ -33,10 +33,6 @@ const NoteEditor = () => {
     return () => (window.onbeforeunload = null);
   }, []);
 
-  // const getNote = () => {
-  //   return currentNoteEditorState.filter((note) => note.id === id)[0];
-  // };
-
   const handleChange = (text) => {
     setCurrentNoteEditorState({ ...currentNoteEditorState, text });
   };

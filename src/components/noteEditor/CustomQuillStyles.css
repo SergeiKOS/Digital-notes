@@ -1,5 +1,7 @@
 .custom-quill {
   background-color: #def2f1;
+  display: grid;
+  grid-template-rows: 1fr;
 }
 
 .custom-quill .ql-container {
@@ -11,7 +13,6 @@
 .custom-quill .ql-editor {
   padding: 8px;
   font-size: 16px;
-  height: calc(100vh - 135px);
 }
 
 .custom-quill .ql-toolbar.ql-snow {
