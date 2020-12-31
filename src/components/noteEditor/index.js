@@ -13,20 +13,23 @@ import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 
 const NoteEditor = () => {
-  const [isChanged, setIsChanged] = useState(false);
   const [redirect, setRedirect] = useState(false);
-  const [userInputNoteTitle, setUserInputNoteTitle] = useState();
   const [headerInput, setHeaderInput] = useState(true);
   const { notes, setNotes } = useContext(GlobalContext);
   const { id } = useParams();
-  const [currentNoteEditorState, setCurrentNoteEditorState] = useState(notes.filter((note) => note.id === id)[0]);
+  const [currentNoteEditorState, setCurrentNoteEditorState] = useState(
+    notes.filter((note) => note.id === id)[0]
+  );
   const inputRef = useRef(null);
+  const quillRef = useRef(null);
 
   useEffect(() => {
-    window.onbeforeunload = () => (isChanged ? "" : null);
-  }, [isChanged]);
+    window.onbeforeunload = () => "";
 
-  useEffect(() => {
+    if (currentNoteEditorState.text.length === 0) {
+      quillRef.current.focus();
+    }
+
     return () => (window.onbeforeunload = null);
   }, []);
 
@@ -34,18 +37,8 @@ const NoteEditor = () => {
   //   return currentNoteEditorState.filter((note) => note.id === id)[0];
   // };
 
-  const handleChange = (e) => {
-    let notesCopy = [...currentNoteEditorState];
-    notesCopy = notesCopy.map((note) => {
-      if (note.id === id) {
-        note.text = e;
-        return note;
-      } else {
-        return note;
-      }
-    });
-    setIsChanged(true);
-    setCurrentNoteEditorState(notesCopy);
+  const handleChange = (text) => {
+    setCurrentNoteEditorState({ ...currentNoteEditorState, text });
   };
 
   const handleDelete = (e, id) => {
@@ -62,7 +55,9 @@ const NoteEditor = () => {
   };
 
   const handleSave = () => {
-    setNotes(currentNoteEditorState);
+    setNotes(
+      notes.map((note) => (note.id === id ? currentNoteEditorState : note))
+    );
     setRedirect(true);
   };
 
@@ -72,17 +67,14 @@ const NoteEditor = () => {
   };
 
   const handleNoteHeaderChange = (e) => {
-    console.log(e.target.value);
-    setUserInputNoteTitle(e.target.value);
+    setCurrentNoteEditorState({
+      ...currentNoteEditorState,
+      noteHeader: e.target.value,
+    });
   };
 
   const handleSubmit = () => {
     setHeaderInput(false);
-    setCurrentNoteEditorState(
-      notes.map((note) =>
-        note.id === id ? { ...note, noteHeader: userInputNoteTitle } : note
-      )
-    );
   };
 
   if (redirect) {
@@ -91,10 +83,7 @@ const NoteEditor = () => {
     return (
       <>
         {headerInput ? (
-          <NoteHeaderForm
-            onSubmit={handleSubmit}
-            style={{ padding: 0, marginTop: "10px" }}
-          >
+          <NoteHeaderForm onSubmit={handleSubmit}>
             <NoteHeaderInput
               value={currentNoteEditorState.noteHeader}
               onChange={handleNoteHeaderChange}
@@ -110,13 +99,14 @@ const NoteEditor = () => {
 
         <div className="custom-quill">
           <Prompt
-            when={isChanged}
+            when={true}
             message="You have unsaved changes, are you sure you want to leave?"
           />
           <ReactQuill
             theme="snow"
             value={currentNoteEditorState.text}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            ref={quillRef}
           />
           <div className="custom-quill-footer">
             <div

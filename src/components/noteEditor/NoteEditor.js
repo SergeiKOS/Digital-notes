@@ -10,7 +10,7 @@ export const NoteHeaderTitle = styled.h1`
 
 export const NoteHeaderForm = styled.form`
   height: 40px;
-  margin-top: 0 !important;
+  margin-top: 0;
 `;
 
 export const NoteHeaderInput = styled.input`
