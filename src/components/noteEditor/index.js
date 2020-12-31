@@ -26,7 +26,7 @@ const NoteEditor = () => {
   useEffect(() => {
     window.onbeforeunload = () => "";
 
-    if (currentNoteEditorState.text.length === 0) {
+    if (currentNoteEditorState?.text.length === 0) {
       quillRef.current.focus();
     }
 
@@ -75,6 +75,8 @@ const NoteEditor = () => {
 
   if (redirect) {
     return <Redirect to="/" />;
+  } else if (!currentNoteEditorState) {
+    return <Redirect to="/not-found" />;
   } else {
     return (
       <>
