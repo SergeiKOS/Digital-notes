@@ -10,6 +10,7 @@ import {
   NotesHeaderInput,
   NotesHeaderEdit,
 } from "./NotesCategoryName";
+import {addDotsInTheEndOfLongText} from '../addDotsInTheEndOfLongText'
 
 const NotesCategoryName = ({ category }) => {
   const [userInputCategory, setUserInputCategory] = useState(category);
@@ -53,7 +54,7 @@ const NotesCategoryName = ({ category }) => {
           />
         </NotesHeaderForm>
       ) : (
-        <NotesHeader>{userInputCategory}</NotesHeader>
+        <NotesHeader>{addDotsInTheEndOfLongText(userInputCategory, 30)}</NotesHeader>
       )}
       <NotesHeaderEdit
         onClick={handleEditCategoryName}

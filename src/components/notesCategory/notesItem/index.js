@@ -4,8 +4,9 @@ import { NoteCard, NoteText, NoteHeader } from "./NoteStyles";
 import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
+import {addDotsInTheEndOfLongText} from '../addDotsInTheEndOfLongText'
 
-const NotesItem = ({ notesItem: {id, noteHeader, text} }) => {
+const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
   const { notes, setNotes } = useContext(GlobalContext);
 
   const textClean = text.replace(/(<([^>]+)>)/gi, "");
@@ -25,7 +26,7 @@ const NotesItem = ({ notesItem: {id, noteHeader, text} }) => {
   return (
     <NoteCard>
       <div className="note-header-wrapper">
-        <NoteHeader>{noteHeader.slice(0, 60)}</NoteHeader>
+        <NoteHeader>{addDotsInTheEndOfLongText(noteHeader, 60)}</NoteHeader>
         <div
           className="trash-icon-wrapper"
           onClick={(e) => handleDelete(e, id)}
@@ -35,7 +36,7 @@ const NotesItem = ({ notesItem: {id, noteHeader, text} }) => {
           </SvgIcon>
         </div>
       </div>
-      <NoteText>{textClean.slice(0, 120)}</NoteText>
+      <NoteText>{addDotsInTheEndOfLongText(textClean, 125)}</NoteText>
     </NoteCard>
   );
 };
