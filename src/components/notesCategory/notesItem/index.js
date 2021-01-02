@@ -25,7 +25,7 @@ const NotesItem = ({ notesItem: {id, noteHeader, text} }) => {
   return (
     <NoteCard>
       <div className="note-header-wrapper">
-        <NoteHeader>{noteHeader.slice(0, 100)}</NoteHeader>
+        <NoteHeader>{noteHeader.slice(0, 60)}</NoteHeader>
         <div
           className="trash-icon-wrapper"
           onClick={(e) => handleDelete(e, id)}

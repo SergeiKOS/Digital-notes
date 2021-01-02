@@ -8,6 +8,9 @@
   border: none;
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
+  height: calc(100% - 31px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .custom-quill .ql-editor {

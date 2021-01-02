@@ -17,6 +17,7 @@ export const NoteHeaderInput = styled.input`
   width: 100%;
   display: block;
   outline: none;
+  border: none;
   font-size: 32px;
   font-weight: bold;
   background: transparent;
