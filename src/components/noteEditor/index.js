@@ -34,7 +34,7 @@ const NoteEditor = () => {
   }, []);
 
   const handleChange = (text) => {
-    setCurrentNoteEditorState({ ...currentNoteEditorState, text });
+    setCurrentNoteEditorState({ ...currentNoteEditorState, text, firstNote: true });
   };
 
   const handleDelete = (e, id) => {
@@ -51,9 +51,19 @@ const NoteEditor = () => {
   };
 
   const handleSave = () => {
-    setNotes(
-      notes.map((note) => (note.id === id ? currentNoteEditorState : note))
-    );
+
+    let newNotes = notes.map((note) => (note.id === id ? currentNoteEditorState : {...note, firstNote: false}));
+
+
+    const toMove= newNotes.splice(newNotes.length-1, 1);
+    console.log(toMove);
+    newNotes.splice(0, 0, ...toMove);
+console.log(newNotes);
+    // setNotes(newNotes);
+    // setNotes(
+    //   notes.map((note) => (note.id === id ? currentNoteEditorState : note))
+    // );
+    setNotes(newNotes)
     setRedirect(true);
   };
 
