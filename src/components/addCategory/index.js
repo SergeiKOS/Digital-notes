@@ -1,6 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 
@@ -16,16 +18,18 @@ const AddCategory = () => {
       {
         id: uuidv4(),
         category: categoryName,
-        noteHeader: '',
+        noteHeader: "",
         text: "",
       },
     ]);
   };
 
   return (
-    <AddCategoryBtn onClick={handleAddCategory} aria-label="add category">
-      +
-    </AddCategoryBtn>
+    <Tippy content="Add category">
+      <AddCategoryBtn onClick={handleAddCategory} aria-label="add category">
+        +
+      </AddCategoryBtn>
+    </Tippy>
   );
 };
 

@@ -8,6 +8,8 @@ import "react-quill/dist/quill.snow.css";
 import "./CustomQuillStyles.css";
 import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../SvgIcon";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
@@ -123,14 +125,16 @@ const NoteEditor = () => {
             ref={quillRef}
           />
           <div className="custom-quill-footer">
-            <div
-              className="trash-icon-wrapper"
-              onClick={(e) => handleDelete(e, id)}
-            >
-              <SvgIcon color={colors.red} size={"40px"}>
-                <IoMdTrash />
-              </SvgIcon>
-            </div>
+            <Tippy content="Delete note">
+              <div
+                className="trash-icon-wrapper"
+                onClick={(e) => handleDelete(e, id)}
+              >
+                <SvgIcon color={colors.red} size={"40px"}>
+                  <IoMdTrash />
+                </SvgIcon>
+              </div>
+            </Tippy>
             <Button onClick={handleSave}>Save</Button>
           </div>
         </div>

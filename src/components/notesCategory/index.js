@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 import GlobalContext from "../../GlobalContext";
 import NotesCategoryName from "./notesCategoryName";
 import {
@@ -44,9 +46,11 @@ const NotesCategory = ({ category }) => {
     <NotesCategoryContainer>
       <div className="notes-category-container-header">
         <NotesCategoryName category={category} />
-        <AddNote onClick={handleAddNote} aria-label="add note">
-          +
-        </AddNote>
+        <Tippy content="Add note">
+          <AddNote onClick={handleAddNote} aria-label="add note">
+            +
+          </AddNote>
+        </Tippy>
       </div>
       <NotesWrapper>
         {getNotesFromCategory().map((note) => (

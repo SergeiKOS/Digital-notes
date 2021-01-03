@@ -19,7 +19,9 @@ export const NotesHeader = styled.h2`
   max-width: 242px;
   margin-top: 10px;
   margin-bottom: 5px;
+  overflow: hidden;
 `;
+
 export const NotesHeaderForm = styled.form`
   margin: 0;
   margin-bottom: 5px;
