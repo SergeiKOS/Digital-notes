@@ -5,6 +5,7 @@ import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
 import {addDotsInTheEndOfLongText} from '../addDotsInTheEndOfLongText'
+import { filterArrayById } from "../../../utils";
 
 const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -17,7 +18,7 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
       "Are you sure you would like to delete your note?"
     );
     if (confirmDelete) {
-      setNotes(notes.filter((note) => note.id !== id));
+      setNotes(filterArrayById(notes, id));
     } else {
       return;
     }

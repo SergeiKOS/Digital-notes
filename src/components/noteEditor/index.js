@@ -11,6 +11,7 @@ import SvgIcon from "../SvgIcon";
 import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
+import { filterArrayById } from "../../utils";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
@@ -47,7 +48,7 @@ const NoteEditor = () => {
       "Are you sure you would like to delete your note?"
     );
     if (confirmDelete) {
-      setNotes(notes.filter((note) => note.id !== id));
+      setNotes(filterArrayById(notes, id));
       setRedirect(true);
     } else {
       return;
@@ -57,7 +58,7 @@ const NoteEditor = () => {
   const handleSave = () => {
     let notesCopy = [...notes];
 
-    notesCopy = notesCopy.filter((note) => note.id !== id);
+    notesCopy = filterArrayById(notesCopy, id);
     notesCopy.unshift(currentNoteEditorState);
 
     setNotes(notesCopy);
