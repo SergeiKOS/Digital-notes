@@ -12,6 +12,7 @@ import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 import { filterArrayById } from "../../utils";
+import { keyCodeChecker } from "./keyCodeChecker";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
@@ -34,11 +35,26 @@ const NoteEditor = () => {
     return () => (window.onbeforeunload = null);
   }, []);
 
+  useEffect(() => {
+    const keyCodeCheckerCallback = (e) => {
+      if (keyCodeChecker(e)) handleSave()
+    };
+    window.addEventListener("keydown", keyCodeCheckerCallback);
+
+    return () => window.removeEventListener("keydown", keyCodeCheckerCallback);
+  }, [currentNoteEditorState]);
+
+  const handleNoteHeaderChange = (e) => {
+    setCurrentNoteEditorState({
+      ...currentNoteEditorState,
+      noteHeader: e.target.value,
+    });
+  };
+
   const handleChange = (text) => {
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
       text,
-      firstNote: true,
     });
   };
 
@@ -60,7 +76,6 @@ const NoteEditor = () => {
 
     notesCopy = filterArrayById(notesCopy, id);
     notesCopy.unshift(currentNoteEditorState);
-
     setNotes(notesCopy);
     setRedirect(true);
   };
@@ -68,13 +83,6 @@ const NoteEditor = () => {
   const handleEditHeaderName = () => {
     setHeaderInput(true);
     setTimeout(() => inputRef.current.focus(), 0);
-  };
-
-  const handleNoteHeaderChange = (e) => {
-    setCurrentNoteEditorState({
-      ...currentNoteEditorState,
-      noteHeader: e.target.value,
-    });
   };
 
   const handleSubmit = () => {
