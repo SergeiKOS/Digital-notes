@@ -37,7 +37,7 @@ const NoteEditor = () => {
 
   useEffect(() => {
     const keyCodeCheckerCallback = (e) => {
-      if (keyCodeChecker(e)) handleSave()
+      if (keyCodeChecker(e)) handleSave();
     };
     window.addEventListener("keydown", keyCodeCheckerCallback);
 

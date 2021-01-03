@@ -9,9 +9,16 @@ const initialState = [
   {
     id: "42d14e98-3021-4841-bf41-2d550e79c76c",
     category: "How to use this app",
+    noteHeader: "Attention",
+    text:
+      "<p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p>",
+  },
+  {
+    id: "4d118fdd-7a94-4d43-adbd-eb1bf58b5ead",
+    category: "How to use this app",
     noteHeader: "Hot keys",
     text:
-      "<h1>How to use this notes</h1> <p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p><h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li></ul>",
+      "<h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li><li>Ctrl + Shift + s -> save note and exit</li></ul>",
   },
   {
     id: "e33903ac-9212-4595-8858-916704557c37",
