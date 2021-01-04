@@ -12,7 +12,7 @@ const NotesCategories = () => {
 
   return (
     <>
-      <Header withButton={true} />
+      <Header withButton={true} mainPage={true} />
       <div
         className="notes-category-wrapper"
         style={{ display: "inline-flex" }}
