@@ -1,11 +1,13 @@
+import ReactDOM from 'react-dom'
+
 const Modal = ({ message, isOpen, onClose }) => {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
     <div className="modal">
-      <span className="message">{message}</span>
+      <div className="message">{message}</div>
       <button onClick={onClose}>Close</button>
     </div>,
-    domNode
+    document.getElementById('portal')
   );
 };
 
