@@ -15,11 +15,14 @@ import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 import { filterArrayById } from "../../utils";
 import { keyCodeChecker } from "./keyCodeChecker";
+import useModal from "../../customHooks/useModal/index";
+import Modal from "../modal";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
   const [headerInput, setHeaderInput] = useState(true);
   const { notes, setNotes } = useContext(GlobalContext);
+  const { visible, handleVisibility } = useModal();
   const { id } = useParams();
   const [currentNoteEditorState, setCurrentNoteEditorState] = useState(
     notes.filter((note) => note.id === id)[0]
@@ -60,12 +63,13 @@ const NoteEditor = () => {
     });
   };
 
-  const handleDelete = (e, id) => {
-    e.preventDefault();
-    const confirmDelete = window.confirm(
-      "Are you sure you would like to delete your note?"
-    );
-    if (confirmDelete) {
+  const handleDelete = () => {
+    handleVisibility();
+  };
+
+  const handleDeleteConfirmation = (deleteConfirmation) => {
+    handleVisibility();
+    if (deleteConfirmation) {
       setNotes(filterArrayById(notes, id));
       setRedirect(true);
     } else {
@@ -126,10 +130,7 @@ const NoteEditor = () => {
           />
           <div className="custom-quill-footer">
             <Tippy content="Delete note">
-              <div
-                className="trash-icon-wrapper"
-                onClick={(e) => handleDelete(e, id)}
-              >
+              <div className="trash-icon-wrapper" onClick={handleDelete}>
                 <SvgIcon color={colors.red} size={"40px"}>
                   <IoMdTrash />
                 </SvgIcon>
@@ -138,6 +139,15 @@ const NoteEditor = () => {
             <Button onClick={handleSave}>Save</Button>
           </div>
         </div>
+        <Modal isOpen={visible} onClose={handleVisibility}>
+          <div>"Are you sure you would like to delete your note?"</div>
+          <button type="button" onClick={() => handleDeleteConfirmation(true)}>
+            OK
+          </button>
+          <button type="button" onClick={() => handleDeleteConfirmation(false)}>
+            Cancel
+          </button>
+        </Modal>
       </>
     );
   }
