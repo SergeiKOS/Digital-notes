@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
+import useModal from "../../customHooks/useModal/index";
+import Modal from "../modal";
 
 const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
+  const { visible, handleVisibility } = useModal();
+  const [userCategoryValue, serUserCategoryValue] = useState("");
 
-  const handleAddCategory = () => {
-    const categoryName = window.prompt("Enter name of the category.", "");
+  const handleInputChange = (e) => {
+    serUserCategoryValue(e.target.value);
+  };
+
+  const handleSubmitCategory = () => {
     let notesCopy = [...notes];
 
     setNotes([
       ...notesCopy,
       {
         id: uuidv4(),
-        category: categoryName,
+        category: userCategoryValue,
         noteHeader: "",
         text: "",
       },
@@ -25,11 +32,26 @@ const AddCategory = () => {
   };
 
   return (
-    <Tippy content="Add category">
-      <AddCategoryBtn onClick={handleAddCategory} aria-label="add category">
-        +
-      </AddCategoryBtn>
-    </Tippy>
+    <>
+      <Tippy content="Add category">
+        <AddCategoryBtn onClick={handleVisibility} aria-label="add category">
+          +
+        </AddCategoryBtn>
+      </Tippy>
+      <Modal isOpen={visible} onClose={handleVisibility}>
+        <form onSubmit={handleSubmitCategory}>
+          <label htmlFor="category-name">Enter name of the category.</label>
+          <input
+            autoFocus={true}
+            type="text"
+            id="category-name"
+            value={userCategoryValue}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Confirm name</button>
+        </form>
+      </Modal>
+    </>
   );
 };
 

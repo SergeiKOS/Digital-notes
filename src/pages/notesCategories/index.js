@@ -2,7 +2,6 @@ import { useContext } from "react";
 import GlobalContext from "../../GlobalContext";
 import Header from "../../components/header";
 import NotesCategory from "../../components/notesCategory";
-import Modal from "../../components/modal";
 
 const NotesCategories = () => {
   const { notes } = useContext(GlobalContext);
@@ -22,7 +21,6 @@ const NotesCategories = () => {
           <NotesCategory category={category} key={`${category}id`} />
         ))}
       </div>
-      <Modal isOpen={true} message='hi'/>
     </>
   );
 };
