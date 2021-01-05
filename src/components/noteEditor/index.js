@@ -29,7 +29,8 @@ const NoteEditor = () => {
   );
   const inputRef = useRef(null);
   const quillRef = useRef(null);
-
+  const [isNotSave, setIsNoteSave] = useState(false);
+  
   useEffect(() => {
     window.onbeforeunload = () => "";
 
@@ -50,6 +51,7 @@ const NoteEditor = () => {
   }, [currentNoteEditorState]);
 
   const handleNoteHeaderChange = (e) => {
+    setIsNoteSave(true);
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
       noteHeader: e.target.value,
@@ -57,6 +59,7 @@ const NoteEditor = () => {
   };
 
   const handleChange = (text) => {
+    setIsNoteSave(true);
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
       text,
@@ -70,6 +73,7 @@ const NoteEditor = () => {
   const handleDeleteConfirmation = (deleteConfirmation) => {
     handleVisibility();
     if (deleteConfirmation) {
+      setIsNoteSave(false);
       setNotes(filterArrayById(notes, id));
       setRedirect(true);
     } else {
@@ -78,6 +82,7 @@ const NoteEditor = () => {
   };
 
   const handleSave = () => {
+    setIsNoteSave(false);
     let notesCopy = [...notes];
 
     notesCopy = filterArrayById(notesCopy, id);
@@ -119,7 +124,7 @@ const NoteEditor = () => {
 
         <div className="custom-quill">
           <Prompt
-            when={true}
+            when={isNotSave}
             message="You have unsaved changes, are you sure you want to leave?"
           />
           <ReactQuill
