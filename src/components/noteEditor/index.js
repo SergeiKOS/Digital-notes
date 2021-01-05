@@ -17,6 +17,7 @@ import { filterArrayById } from "../../utils";
 import { keyCodeChecker } from "./keyCodeChecker";
 import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
+import { ModalMessage, ModalButtonsWrapper } from "../modal/ModalStyles";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
@@ -30,7 +31,7 @@ const NoteEditor = () => {
   const inputRef = useRef(null);
   const quillRef = useRef(null);
   const [isNotSave, setIsNoteSave] = useState(false);
-  
+
   useEffect(() => {
     window.onbeforeunload = () => "";
 
@@ -145,13 +146,25 @@ const NoteEditor = () => {
           </div>
         </div>
         <Modal isOpen={visible} onClose={handleVisibility}>
-          <div>"Are you sure you would like to delete your note?"</div>
-          <button type="button" onClick={() => handleDeleteConfirmation(true)}>
-            OK
-          </button>
-          <button type="button" onClick={() => handleDeleteConfirmation(false)}>
-            Cancel
-          </button>
+          <ModalMessage>
+            Are you sure you would like to delete your note?
+          </ModalMessage>
+          <ModalButtonsWrapper>
+            <button
+              className="modal-buttons-wrapper--confirm"
+              type="button"
+              onClick={() => handleDeleteConfirmation(true)}
+            >
+              OK
+            </button>
+            <button
+              className="modal-buttons-wrapper--cancel"
+              type="button"
+              onClick={() => handleDeleteConfirmation(false)}
+            >
+              Cancel
+            </button>
+          </ModalButtonsWrapper>
         </Modal>
       </>
     );

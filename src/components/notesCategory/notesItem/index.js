@@ -10,6 +10,7 @@ import { addDotsInTheEndOfLongText } from "../addDotsInTheEndOfLongText";
 import { filterArrayById } from "../../../utils";
 import useModal from "../../../customHooks/useModal";
 import Modal from "../../modal";
+import { ModalMessage, ModalButtonsWrapper } from "../../modal/ModalStyles";
 
 const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -47,19 +48,25 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
         <NoteText>{addDotsInTheEndOfLongText(textClean, 125)}</NoteText>
       </NoteCard>
       <Modal isOpen={visible} onClose={toggleModal}>
-        <div>"Are you sure you would like to delete your note?"</div>
-        <button
-          type="button"
-          onClick={(e) => handleDeleteConfirmation(e, true)}
-        >
-          OK
-        </button>
-        <button
-          type="button"
-          onClick={(e) => handleDeleteConfirmation(e, false)}
-        >
-          Cancel
-        </button>
+        <ModalMessage>
+          Are you sure you would like to delete your note?
+        </ModalMessage>
+        <ModalButtonsWrapper>
+          <button
+            type="button"
+            onClick={(e) => handleDeleteConfirmation(e, true)}
+            className="modal-buttons-wrapper--confirm"
+          >
+            OK
+          </button>
+          <button
+            type="button"
+            onClick={(e) => handleDeleteConfirmation(e, false)}
+            className="modal-buttons-wrapper--cancel"
+          >
+            Cancel
+          </button>
+        </ModalButtonsWrapper>
       </Modal>
     </>
   );
