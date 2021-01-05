@@ -23,7 +23,7 @@ const modal = {
 const Modal = ({isOpen, onClose, children}) => {
   if (!isOpen) return null;
   return ReactDOM.createPortal(
-    <div style={overlay}>
+    <div style={overlay} onClick={onClose}>
       <div style={modal} role="dialog" aria-modal="true">
         {children}
         <button onClick={onClose}>Close</button>

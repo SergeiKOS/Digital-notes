@@ -5,7 +5,7 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
-import useModal from "../../customHooks/useModal/index";
+import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
 
 const AddCategory = () => {

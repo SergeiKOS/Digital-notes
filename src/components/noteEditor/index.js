@@ -15,7 +15,7 @@ import { Button } from "./ButtonStyles";
 import { colors } from "../../commonStyles/variables";
 import { filterArrayById } from "../../utils";
 import { keyCodeChecker } from "./keyCodeChecker";
-import useModal from "../../customHooks/useModal/index";
+import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
 
 const NoteEditor = () => {
