@@ -18,6 +18,14 @@ export const NoteCard = styled.div`
     cursor: pointer;
     align-self: flex-end;
   }
+
+  & .trash-icon {
+    color: ${colors.red};
+
+    &:hover {
+      color: ${colors.redHover};
+    }
+  }
 `;
 
 export const NoteHeader = styled.h3`

@@ -7,6 +7,7 @@ import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
+import {ModalInput, ModalButtonConfirm} from "../modal/ModalStyles";
 
 const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -40,15 +41,15 @@ const AddCategory = () => {
       </Tippy>
       <Modal isOpen={visible} onClose={handleVisibility}>
         <form onSubmit={handleSubmitCategory}>
-          <label htmlFor="category-name">Enter name of the category.</label>
-          <input
+          <label htmlFor="category-name">Enter name of the category:</label>
+          <ModalInput
             autoFocus={true}
             type="text"
             id="category-name"
             value={userCategoryValue}
             onChange={handleInputChange}
           />
-          <button type="submit">Confirm name</button>
+          <ModalButtonConfirm type="submit">Confirm name</ModalButtonConfirm>
         </form>
       </Modal>
     </>

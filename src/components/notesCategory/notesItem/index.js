@@ -39,8 +39,8 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
           <NoteHeader>{addDotsInTheEndOfLongText(noteHeader, 60)}</NoteHeader>
           <Tippy content="Delete note">
             <div className="trash-icon-wrapper" onClick={toggleModal}>
-              <SvgIcon color={colors.red} size={"20px"}>
-                <IoMdTrash />
+              <SvgIcon size={"20px"}>
+                <IoMdTrash className="trash-icon" />
               </SvgIcon>
             </div>
           </Tippy>

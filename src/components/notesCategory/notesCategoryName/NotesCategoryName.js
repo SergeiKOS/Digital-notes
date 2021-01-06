@@ -7,7 +7,7 @@ export const NoteHeaderWrapper = styled.div`
   flex-grow: 1;
   padding: 0;
   margin: 0;
-  
+
   &:hover {
     outline: 1px solid ${colors.lightDark};
   }
@@ -47,4 +47,10 @@ export const NotesHeaderEdit = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  & .edit-icon {
+    &:hover {
+      color: ${colors.grayHover}!important;
+    }
+  }
 `;

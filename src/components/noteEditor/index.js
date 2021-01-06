@@ -136,9 +136,9 @@ const NoteEditor = () => {
           />
           <div className="custom-quill-footer">
             <Tippy content="Delete note">
-              <div className="trash-icon-wrapper" onClick={handleDelete}>
-                <SvgIcon color={colors.red} size={"40px"}>
-                  <IoMdTrash />
+              <div onClick={handleDelete}>
+                <SvgIcon size={"40px"}>
+                  <IoMdTrash className="trash-icon" />
                 </SvgIcon>
               </div>
             </Tippy>

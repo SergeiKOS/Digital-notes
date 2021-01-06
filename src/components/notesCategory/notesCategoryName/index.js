@@ -69,7 +69,7 @@ const NotesCategoryName = ({ category }) => {
             ""
           ) : (
             <SvgIcon color={colors.dark} size={"20px"}>
-              <IoMdCreate />
+              <IoMdCreate className='edit-icon'/>
             </SvgIcon>
           )}
         </NotesHeaderEdit>

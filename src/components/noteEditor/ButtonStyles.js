@@ -9,4 +9,8 @@ export const Button = styled.button`
   font-size: inherit;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+      background-color: ${colors.greenHover};
+    }
 `;

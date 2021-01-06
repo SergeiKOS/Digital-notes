@@ -46,6 +46,11 @@
   justify-content: space-between;
 }
 
-.trash-icon-wrapper {
+.trash-icon { 
   cursor: pointer;
+  color: #af2a2f;
+}
+
+.trash-icon:hover {
+  color: #c15155;
 }

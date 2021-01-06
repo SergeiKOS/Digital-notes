@@ -19,7 +19,7 @@ export const ModalWindow = styled.div`
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 50px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   padding-right: 10px;
   background-color: ${colors.almostWhite};
   z-index: 2;
@@ -37,6 +37,12 @@ export const CloseButton = styled.button`
   cursor: pointer;
   color: ${colors.light};
   transform: rotate(45deg);
+
+  &:focus,
+  &:active {
+    outline: none;
+    color: ${colors.dark};
+  }
 `;
 
 export const ModalMessage = styled.div`
@@ -55,13 +61,53 @@ export const ModalButtonsWrapper = styled.div`
     width: 80px;
     border: none;
     color: #fff;
+    cursor: pointer;
   }
 
   & .modal-buttons-wrapper--confirm {
     background-color: ${colors.green};
+
+    &:hover {
+      background-color: ${colors.greenHover};
+    }
   }
 
   & .modal-buttons-wrapper--cancel {
     background-color: ${colors.red};
+
+    &:hover {
+      background-color: ${colors.redHover};
+    }
+  }
+`;
+
+export const ModalInput = styled.input`
+  border: none;
+  padding: 5px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-right: 40px;
+
+  &:focus,
+  &:active {
+    border: none;
+    outline: 1px solid ${colors.light};
+  }
+`;
+
+export const ModalButtonConfirm = styled.button`
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  background-color: ${colors.green};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.greenHover};
   }
 `;
