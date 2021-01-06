@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Tippy from "@tippyjs/react";
@@ -7,7 +7,7 @@ import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
-import {ModalInput, ModalButtonConfirm} from "../modal/ModalStyles";
+import { ModalInput, ModalButtonConfirm } from "../modal/ModalStyles";
 
 const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -19,6 +19,7 @@ const AddCategory = () => {
   };
 
   const handleSubmitCategory = () => {
+    handleVisibility(false)
     let notesCopy = [...notes];
 
     setNotes([
@@ -40,7 +41,7 @@ const AddCategory = () => {
         </AddCategoryBtn>
       </Tippy>
       <Modal isOpen={visible} onClose={handleVisibility}>
-        <form onSubmit={handleSubmitCategory}>
+        <form>
           <label htmlFor="category-name">Enter name of the category:</label>
           <ModalInput
             autoFocus={true}
@@ -48,8 +49,11 @@ const AddCategory = () => {
             id="category-name"
             value={userCategoryValue}
             onChange={handleInputChange}
+            autoComplete="off"
           />
-          <ModalButtonConfirm type="submit">Confirm name</ModalButtonConfirm>
+          <ModalButtonConfirm type="button" onClick={handleSubmitCategory}>
+            Confirm name
+          </ModalButtonConfirm>
         </form>
       </Modal>
     </>

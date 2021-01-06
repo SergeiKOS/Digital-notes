@@ -5,7 +5,6 @@ import { IoMdTrash } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { colors } from "../../../commonStyles/variables";
 import { addDotsInTheEndOfLongText } from "../addDotsInTheEndOfLongText";
 import { filterArrayById } from "../../../utils";
 import useModal from "../../../customHooks/useModal";

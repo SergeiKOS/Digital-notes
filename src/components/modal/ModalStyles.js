@@ -23,6 +23,7 @@ export const ModalWindow = styled.div`
   padding-right: 10px;
   background-color: ${colors.almostWhite};
   z-index: 2;
+  cursor: auto;
   border: 10px solid ${colors.light};
 `;
 
