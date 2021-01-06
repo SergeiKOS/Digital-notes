@@ -12,7 +12,6 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { Button } from "./ButtonStyles";
-import { colors } from "../../commonStyles/variables";
 import { filterArrayById } from "../../utils";
 import { keyCodeChecker } from "./keyCodeChecker";
 import useModal from "../../customHooks/useModal";
@@ -30,7 +29,8 @@ const NoteEditor = () => {
   );
   const inputRef = useRef(null);
   const quillRef = useRef(null);
-  const [isNotSave, setIsNoteSave] = useState(false);
+  const [notSave, setNotSave] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true); // for ReactQuill because it invokes handleChange with first render
 
   useEffect(() => {
     window.onbeforeunload = () => "";
@@ -52,7 +52,7 @@ const NoteEditor = () => {
   }, [currentNoteEditorState]);
 
   const handleNoteHeaderChange = (e) => {
-    setIsNoteSave(true);
+    setNotSave(true);
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
       noteHeader: e.target.value,
@@ -60,7 +60,12 @@ const NoteEditor = () => {
   };
 
   const handleChange = (text) => {
-    setIsNoteSave(true);
+    if (!initialLoading) {
+      setNotSave(true);
+    } else {
+      setInitialLoading(false);
+    }
+
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
       text,
@@ -74,7 +79,7 @@ const NoteEditor = () => {
   const handleDeleteConfirmation = (deleteConfirmation) => {
     handleVisibility();
     if (deleteConfirmation) {
-      setIsNoteSave(false);
+      setNotSave(false);
       setNotes(filterArrayById(notes, id));
       setRedirect(true);
     } else {
@@ -83,7 +88,7 @@ const NoteEditor = () => {
   };
 
   const handleSave = () => {
-    setIsNoteSave(false);
+    setNotSave(false);
     let notesCopy = [...notes];
 
     notesCopy = filterArrayById(notesCopy, id);
@@ -125,7 +130,7 @@ const NoteEditor = () => {
 
         <div className="custom-quill">
           <Prompt
-            when={isNotSave}
+            when={notSave}
             message="You have unsaved changes, are you sure you want to leave?"
           />
           <ReactQuill
