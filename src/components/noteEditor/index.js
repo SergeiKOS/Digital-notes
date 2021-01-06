@@ -135,7 +135,7 @@ const NoteEditor = () => {
           />
           <ReactQuill
             theme="snow"
-            value={currentNoteEditorState.text}
+            defaultValue={currentNoteEditorState.text}
             onChange={handleChange}
             ref={quillRef}
           />
