@@ -19,7 +19,7 @@ const AddCategory = () => {
   };
 
   const handleSubmitCategory = () => {
-    handleVisibility(false)
+    handleVisibility(false);
     let notesCopy = [...notes];
 
     setNotes([

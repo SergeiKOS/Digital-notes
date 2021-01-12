@@ -52,7 +52,6 @@ const GlobalStyle = createGlobalStyle`
     list-style-type: none;
   }
 
-  
   .container {
     min-width: 320px;
     margin-left: auto;

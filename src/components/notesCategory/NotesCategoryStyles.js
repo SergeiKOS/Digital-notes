@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from '../../commonStyles/variables'
+import { colors } from "../../commonStyles/variables";
 
 export const NotesCategoryContainer = styled.div`
   padding: 10px;
@@ -27,6 +27,6 @@ export const AddNote = styled.button`
   line-height: 0;
 
   &:hover {
-    color: ${colors.grayHover}
+    color: ${colors.grayHover};
   }
 `;

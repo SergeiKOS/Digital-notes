@@ -6,14 +6,14 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   const modalClick = (e) => {
     // this click only for block click from overlay
-    e.stopPropagation()
-  }
-  
+    e.stopPropagation();
+  };
+
   return ReactDOM.createPortal(
     <Overlay onClick={onClose}>
       <ModalWindow onClick={modalClick} role="dialog" aria-modal="true">
         <div>{children}</div>
-        <CloseButton onClick={onClose} type="button" aria-label='Close popup'>
+        <CloseButton onClick={onClose} type="button" aria-label="Close popup">
           +
         </CloseButton>
       </ModalWindow>

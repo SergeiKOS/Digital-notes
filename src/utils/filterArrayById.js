@@ -1,1 +1,2 @@
-export const filterArrayById = (array, id) => array.filter((item) => item.id !== id);
+export const filterArrayById = (array, id) =>
+  array.filter((item) => item.id !== id);

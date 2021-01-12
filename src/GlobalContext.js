@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const GlobalContext = React.createContext()
-GlobalContext.displayName = 'GlobalContext'
+const GlobalContext = React.createContext();
+GlobalContext.displayName = "GlobalContext";
 
 export default GlobalContext;
