@@ -17,7 +17,6 @@ export const NotesHeader = styled.h2`
   color: ${colors.dark};
   margin-right: 16px;
   max-width: 242px;
-  margin-top: 10px;
   margin-bottom: 5px;
   overflow: hidden;
 `;

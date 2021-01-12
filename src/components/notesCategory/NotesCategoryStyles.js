@@ -3,7 +3,11 @@ import { colors } from "../../commonStyles/variables";
 
 export const NotesCategoryContainer = styled.div`
   padding: 10px;
+  padding-top: 0;
+  margin-bottom: 30px;
   width: 320px;
+  max-height: 90vh;
+  overflow-y: auto;
 
   & .notes-category-container-header {
     display: flex;
