@@ -20,6 +20,7 @@ const AddCategory = () => {
 
   const handleSubmitCategory = () => {
     handleVisibility(false);
+    serUserCategoryValue("");
     let notesCopy = [...notes];
 
     setNotes([
@@ -41,7 +42,7 @@ const AddCategory = () => {
         </AddCategoryBtn>
       </Tippy>
       <Modal isOpen={visible} onClose={handleVisibility}>
-        <form>
+        <form onSubmit={handleSubmitCategory}>
           <label htmlFor="category-name">Enter name of the category:</label>
           <ModalInput
             autoFocus={true}
