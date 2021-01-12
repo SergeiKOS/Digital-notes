@@ -20,24 +20,6 @@ const initialState = [
     text:
       "<h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li><li>Ctrl + Shift + s -> save note and exit</li></ul>",
   },
-  {
-    id: "e33903ac-9212-4595-8858-916704557c37",
-    category: "Todo",
-    noteHeader: "TypeScript",
-    text: "Learn TypeScript",
-  },
-  {
-    id: "fa26200b-1486-4930-9e6a-29c6a5c5d867",
-    category: "Todo",
-    noteHeader: "React Native",
-    text: "Learn React Native",
-  },
-  {
-    id: "e4a8c90d-45ed-443c-9572-8201c1e4899b",
-    category: "Todo",
-    noteHeader: "Learn Next.js",
-    text: "Learn Next.js",
-  },
 ];
 
 function App() {
