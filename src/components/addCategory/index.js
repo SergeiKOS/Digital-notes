@@ -34,6 +34,11 @@ const AddCategory = () => {
     ]);
   };
 
+  const handleClose = () => {
+    handleVisibility();
+    serUserCategoryValue("");
+  };
+
   return (
     <>
       <Tippy content="Add category">
@@ -41,7 +46,7 @@ const AddCategory = () => {
           +
         </AddCategoryBtn>
       </Tippy>
-      <Modal isOpen={visible} onClose={handleVisibility}>
+      <Modal isOpen={visible} onClose={handleClose}>
         <form onSubmit={handleSubmitCategory}>
           <label htmlFor="category-name">Enter name of the category:</label>
           <ModalInput
