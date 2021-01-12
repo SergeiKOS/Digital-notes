@@ -4,7 +4,8 @@ import { colors } from "../../../commonStyles/variables";
 export const NoteCard = styled.div`
   background-color: ${colors.almostWhite};
   margin-bottom: 10px;
-  padding: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
   font-size: 14px;
   max-height: 127px;
   overflow: hidden;
@@ -17,19 +18,21 @@ export const NoteCard = styled.div`
   & .trash-icon-wrapper {
     cursor: pointer;
     align-self: flex-end;
+    padding: 10px;
+
+    &:hover .trash-icon {
+      color: ${colors.redHover};
+    }
   }
 
   & .trash-icon {
     color: ${colors.red};
-
-    &:hover {
-      color: ${colors.redHover};
-    }
   }
 `;
 
 export const NoteHeader = styled.h3`
   font-weight: bold;
+  margin-top: 10px;
 `;
 
 export const NoteText = styled.div`
