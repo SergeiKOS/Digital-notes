@@ -11,7 +11,7 @@ const initialState = [
     category: "About app",
     noteHeader: "Attention",
     text:
-      "<p>Your notes will be store in your browser in the local storage. If you clear local storage your data will be lost.</p>",
+      "<p>Your notes will be stored in your browser in the local storage. If you clear local storage your data will be lost.</p>",
   },
   {
     id: "4d118fdd-7a94-4d43-adbd-eb1bf58b5ead",

@@ -2,7 +2,11 @@ import { LogoType } from "./LogoStyles";
 import { Link } from "react-router-dom";
 
 const Logo = ({ mainPage }) => {
-  return <LogoType>{mainPage ? "DN" : <Link to="/">DN</Link>}</LogoType>;
+  return (
+    <LogoType aria-label="Digital notes logo">
+      {mainPage ? "DN" : <Link to="/">DN</Link>}
+    </LogoType>
+  );
 };
 
 export default Logo;

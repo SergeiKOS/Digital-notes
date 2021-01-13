@@ -18,13 +18,16 @@ export const ModalWindow = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  padding: 50px;
+  padding-top: 50px;
   padding-bottom: 20px;
   padding-right: 10px;
+  padding-left: 10px;
   background-color: ${colors.almostWhite};
   z-index: 2;
   cursor: auto;
   border: 10px solid ${colors.light};
+  padding-right: 27px;
+  padding-left: 27px;
 `;
 
 export const CloseButton = styled.button`
@@ -55,6 +58,7 @@ export const ModalButtonsWrapper = styled.div`
   justify-content: flex-end;
   gap: 10px;
   position: relative;
+  min-width: 205px;
 
   & button {
     border-radius: 5px;
@@ -88,7 +92,6 @@ export const ModalInput = styled.input`
   display: block;
   margin-top: 5px;
   margin-bottom: 15px;
-  margin-right: 40px;
 
   &:focus,
   &:active {
