@@ -6,6 +6,7 @@ import NotesCategory from "../../components/notesCategory";
 const notesCategoryWrapper = {
   display: "flex",
   flexWrap: "wrap",
+  marginTop: "20px",
 };
 
 const NotesCategories = () => {
