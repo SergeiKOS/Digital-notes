@@ -40,4 +40,13 @@ export const AddNote = styled.button`
   &:hover {
     color: ${colors.grayHover};
   }
+
+  &:active {
+    font-size: 34px;
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
