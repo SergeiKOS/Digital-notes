@@ -5,7 +5,7 @@ export const NoteCard = styled.div`
   background-color: ${colors.almostWhite};
   margin-bottom: 10px;
   padding-left: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
   font-size: 14px;
   max-height: 127px;
   overflow: hidden;
@@ -40,4 +40,7 @@ export const NoteText = styled.div`
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   width: 240px;
+  margin-bottom: 4px;
+  margin-top: ${({ textClean, noteHeader }) =>
+    textClean.length > 0 && noteHeader.length < 1 ? "-28px" : "-10px"};
 `;

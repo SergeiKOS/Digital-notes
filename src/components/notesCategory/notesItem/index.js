@@ -45,7 +45,9 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
             </DeleteButton>
           </Tippy>
         </div>
-        <NoteText>{addDotsInTheEndOfLongText(textClean, 125)}</NoteText>
+        <NoteText noteHeader={noteHeader} textClean={textClean}>
+          {addDotsInTheEndOfLongText(textClean, 125)}
+        </NoteText>
       </NoteCard>
       <Modal isOpen={visible} onClose={toggleModal}>
         <ModalMessage>

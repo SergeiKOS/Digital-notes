@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const NoteHeaderTitle = styled.h1`
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-bottom: 3px;
+  padding: 4px 8px 3px 8px;
   cursor: pointer;
+  font-size: 25px;
 `;
 
 export const NoteHeaderForm = styled.form`
@@ -18,10 +17,10 @@ export const NoteHeaderInput = styled.input`
   display: block;
   outline: none;
   border: none;
-  font-size: 32px;
+  font-size: 25px;
   font-weight: bold;
   background: transparent;
-  padding: 3px 10px 7px 8px;
+  padding: 0px 8px 3px 8px;
 
   &:focus {
     border: none;

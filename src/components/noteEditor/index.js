@@ -147,7 +147,7 @@ const NoteEditor = () => {
                 </SvgIcon>
               </DeleteButton>
             </Tippy>
-            <Tippy content="Ctrl + S">
+            <Tippy content="Ctrl + Shift + S">
               <SaveButton onClick={handleSave} type="button">
                 Save
               </SaveButton>
