@@ -6,6 +6,7 @@ import SvgIcon from "../../SvgIcon";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { addDotsInTheEndOfLongText } from "../addDotsInTheEndOfLongText";
+import { DeleteButton } from "../../noteEditor/ButtonStyles";
 import { filterArrayById } from "../../../utils";
 import useModal from "../../../customHooks/useModal";
 import Modal from "../../modal";
@@ -37,11 +38,11 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
         <div className="note-header-wrapper">
           <NoteHeader>{addDotsInTheEndOfLongText(noteHeader, 60)}</NoteHeader>
           <Tippy content="Delete note">
-            <div className="trash-icon-wrapper" onClick={toggleModal}>
+            <DeleteButton className="trash-icon-wrapper" onClick={toggleModal}>
               <SvgIcon size={"20px"}>
                 <IoMdTrash className="trash-icon" />
               </SvgIcon>
-            </div>
+            </DeleteButton>
           </Tippy>
         </div>
         <NoteText>{addDotsInTheEndOfLongText(textClean, 125)}</NoteText>
@@ -62,6 +63,7 @@ const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
             type="button"
             onClick={(e) => handleDeleteConfirmation(e, false)}
             className="modal-buttons-wrapper--cancel"
+            autoFocus={true}
           >
             Cancel
           </button>

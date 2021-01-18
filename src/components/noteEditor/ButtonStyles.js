@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
 
-export const Button = styled.button`
+export const SaveButton = styled.button`
   padding: 8px 20px 8px 20px;
   background-color: ${colors.green};
   border: none;
@@ -13,4 +13,10 @@ export const Button = styled.button`
   &:hover {
     background-color: ${colors.greenHover};
   }
+`;
+
+export const DeleteButton = styled.button`
+  border: none;
+  cursor: pointer;
+  background-color: transparent;too
 `;

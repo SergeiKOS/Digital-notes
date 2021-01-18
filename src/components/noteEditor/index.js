@@ -11,7 +11,7 @@ import SvgIcon from "../SvgIcon";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
-import { Button } from "./ButtonStyles";
+import { SaveButton, DeleteButton } from "./ButtonStyles";
 import { filterArrayById } from "../../utils";
 import { keyCodeChecker } from "./keyCodeChecker";
 import useModal from "../../customHooks/useModal";
@@ -141,13 +141,17 @@ const NoteEditor = () => {
           />
           <div className="custom-quill-footer">
             <Tippy content="Delete note">
-              <div onClick={handleDelete}>
+              <DeleteButton onClick={handleDelete} type="button">
                 <SvgIcon size={"40px"}>
                   <IoMdTrash className="trash-icon" />
                 </SvgIcon>
-              </div>
+              </DeleteButton>
             </Tippy>
-            <Button onClick={handleSave}>Save</Button>
+            <Tippy content="Ctrl + S">
+              <SaveButton onClick={handleSave} type="button">
+                Save
+              </SaveButton>
+            </Tippy>
           </div>
         </div>
         <Modal isOpen={visible} onClose={handleVisibility}>
