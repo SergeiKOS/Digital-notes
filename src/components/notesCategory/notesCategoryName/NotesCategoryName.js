@@ -44,7 +44,7 @@ export const NotesHeaderInput = styled.input`
   }
 `;
 
-export const NotesHeaderError = styled.div`
+export const NotesHeaderError = styled.small`
   position: absolute;
   top: 30px;
   left: 0;

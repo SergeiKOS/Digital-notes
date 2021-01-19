@@ -7,7 +7,11 @@ import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
-import { ModalInput, ModalButtonConfirm } from "../modal/ModalStyles";
+import {
+  ModalInput,
+  ModalInputError,
+  ModalButtonConfirm,
+} from "../modal/ModalStyles";
 
 const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
@@ -70,16 +74,7 @@ const AddCategory = () => {
             autoComplete="off"
           />{" "}
           {sameNameError && (
-            <small
-              style={{
-                color: "red",
-                display: "block",
-                marginTop: "-10px",
-                marginBottom: "10px",
-              }}
-            >
-              Names can't be the same
-            </small>
+            <ModalInputError>Names can't be the same</ModalInputError>
           )}
           <ModalButtonConfirm type="button" onClick={handleSubmitCategory}>
             Confirm name

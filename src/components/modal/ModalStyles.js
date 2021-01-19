@@ -100,6 +100,13 @@ export const ModalInput = styled.input`
   }
 `;
 
+export const ModalInputError = styled.small`
+  color: red;
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 10px;
+`;
+
 export const ModalButtonConfirm = styled.button`
   border-radius: 5px;
   padding: 10px;
