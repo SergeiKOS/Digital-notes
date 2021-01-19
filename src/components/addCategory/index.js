@@ -12,31 +12,43 @@ import { ModalInput, ModalButtonConfirm } from "../modal/ModalStyles";
 const AddCategory = () => {
   const { notes, setNotes } = useContext(GlobalContext);
   const { visible, handleVisibility } = useModal();
-  const [userCategoryValue, serUserCategoryValue] = useState("");
+  const [userInputCategory, setUserInputCategory] = useState("");
+  const [sameNameError, setSameNameError] = useState(false);
 
   const handleInputChange = (e) => {
-    serUserCategoryValue(e.target.value);
+    setUserInputCategory(e.target.value);
   };
 
-  const handleSubmitCategory = () => {
-    handleVisibility(false);
-    serUserCategoryValue("");
+  const handleSubmitCategory = (e) => {
+    e.preventDefault();
     let notesCopy = [...notes];
 
-    setNotes([
-      ...notesCopy,
-      {
-        id: uuidv4(),
-        category: userCategoryValue,
-        noteHeader: "",
-        text: "",
-      },
-    ]);
+    setSameNameError(false);
+
+    const ifSameTitle = notesCopy.find(
+      (note) => note.category === userInputCategory
+    );
+
+    if (!ifSameTitle) {
+      handleVisibility(false);
+      setNotes([
+        ...notesCopy,
+        {
+          id: uuidv4(),
+          category: userInputCategory,
+          noteHeader: "",
+          text: "",
+        },
+      ]);
+      setUserInputCategory("");
+    } else {
+      setSameNameError(true);
+    }
   };
 
   const handleClose = () => {
     handleVisibility();
-    serUserCategoryValue("");
+    setUserInputCategory("");
   };
 
   return (
@@ -53,10 +65,22 @@ const AddCategory = () => {
             autoFocus={true}
             type="text"
             id="category-name"
-            value={userCategoryValue}
+            value={userInputCategory}
             onChange={handleInputChange}
             autoComplete="off"
-          />
+          />{" "}
+          {sameNameError && (
+            <small
+              style={{
+                color: "red",
+                display: "block",
+                marginTop: "-10px",
+                marginBottom: "10px",
+              }}
+            >
+              Names can't be the same
+            </small>
+          )}
           <ModalButtonConfirm type="button" onClick={handleSubmitCategory}>
             Confirm name
           </ModalButtonConfirm>

@@ -28,6 +28,8 @@ export const NotesWrapper = styled.div`
   background-color: #62c9c4;
   padding: 10px;
   padding-bottom: 1px;
+  /* display: none; */
+  /* background-color: red; */
 `;
 
 export const AddNote = styled.button`

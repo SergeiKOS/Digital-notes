@@ -10,6 +10,7 @@ import {
   NotesHeader,
   NotesHeaderForm,
   NotesHeaderInput,
+  NotesHeaderError,
   NotesHeaderEdit,
 } from "./NotesCategoryName";
 import { addDotsInTheEndOfLongText } from "../addDotsInTheEndOfLongText";
@@ -18,6 +19,7 @@ const NotesCategoryName = ({ category }) => {
   const [userInputCategory, setUserInputCategory] = useState(category);
   const [headerInput, setHeaderInput] = useState(false);
   const { notes, setNotes } = useContext(GlobalContext);
+  const [sameNameError, setSameNameError] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -30,15 +32,30 @@ const NotesCategoryName = ({ category }) => {
     setUserInputCategory(e.target.value);
   };
 
-  const handleSubmit = () => {
-    setHeaderInput(false);
-    setNotes(
-      notes.map((note) =>
-        note.category === category
-          ? { ...note, category: userInputCategory }
-          : note
-      )
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let ifSameTitle;
+    if (category === userInputCategory) {
+      ifSameTitle = false;
+    } else {
+      ifSameTitle = notes.find((note) => note.category === userInputCategory);
+    }
+
+    if (!ifSameTitle) {
+      setHeaderInput(false);
+      setSameNameError(false);
+      setNotes(
+        notes.map((note) =>
+          note.category === category
+            ? { ...note, category: userInputCategory }
+            : note
+        )
+      );
+    } else {
+      setSameNameError(true);
+      inputRef.current.focus();
+    }
   };
 
   return (
@@ -51,6 +68,9 @@ const NotesCategoryName = ({ category }) => {
             onBlur={handleSubmit}
             ref={inputRef}
           />
+          {sameNameError && (
+            <NotesHeaderError>Names can't be the same</NotesHeaderError>
+          )}
         </NotesHeaderForm>
       ) : (
         <NotesHeader>

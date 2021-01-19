@@ -18,7 +18,7 @@ export const NotesHeader = styled.h2`
   color: ${colors.dark};
   margin-right: 5px;
   max-width: 242px;
-  margin-bottom: 5px;
+  margin-top: 3px;
   overflow: hidden;
 `;
 
@@ -27,6 +27,7 @@ export const NotesHeaderForm = styled.form`
   margin-bottom: 5px;
   font-size: 24px;
   border: none;
+  position: relative;
 `;
 
 export const NotesHeaderInput = styled.input`
@@ -41,6 +42,16 @@ export const NotesHeaderInput = styled.input`
     border: none;
     border-bottom: 1px solid ${colors.almostWhite};
   }
+`;
+
+export const NotesHeaderError = styled.div`
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #fff;
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
 `;
 
 export const NotesHeaderEdit = styled.button`
