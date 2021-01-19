@@ -120,6 +120,7 @@ const NoteEditor = () => {
               onChange={handleNoteHeaderChange}
               onBlur={handleSubmit}
               ref={inputRef}
+              placeholder='Title...'
             />
           </NoteHeaderForm>
         ) : (
@@ -138,6 +139,7 @@ const NoteEditor = () => {
             defaultValue={currentNoteEditorState.text}
             onChange={handleChange}
             ref={quillRef}
+            placeholder='Text...'
           />
           <div className="custom-quill-footer">
             <Tippy content="Delete note">

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../commonStyles/variables";
 
 export const NoteHeaderTitle = styled.h1`
   padding: 4px 8px 3px 8px;
@@ -24,5 +25,10 @@ export const NoteHeaderInput = styled.input`
 
   &:focus {
     border: none;
+  }
+
+  &::placeholder {
+    color: ${colors.dark};
+    opacity: 0.5;
   }
 `;

@@ -18,5 +18,5 @@ export const SaveButton = styled.button`
 export const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
-  background-color: transparent;too
+  background-color: transparent;
 `;
