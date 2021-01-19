@@ -44,10 +44,7 @@ const NotesCategoryName = ({ category }) => {
   return (
     <NoteHeaderWrapper onClick={handleEditCategoryName}>
       {headerInput ? (
-        <NotesHeaderForm
-          onSubmit={handleSubmit}
-          style={{ padding: 0, marginTop: "10px" }}
-        >
+        <NotesHeaderForm onSubmit={handleSubmit}>
           <NotesHeaderInput
             value={userInputCategory}
             onChange={handleCategoryChange}

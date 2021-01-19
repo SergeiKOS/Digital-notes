@@ -7,9 +7,10 @@ export const NoteHeaderWrapper = styled.div`
   flex-grow: 1;
   padding: 0;
   margin: 0;
+  height: 33px;
 
   &:hover {
-    outline: 1px solid ${colors.lightDark};
+    cursor: pointer;
   }
 `;
 
