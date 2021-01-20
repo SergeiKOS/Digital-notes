@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
 
 export const NotesCategoryContainer = styled.div`
-  padding: 10px;
   padding-top: 0;
   margin-left: auto;
   margin-right: auto;

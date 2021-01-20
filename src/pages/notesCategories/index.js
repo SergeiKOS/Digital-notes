@@ -2,12 +2,7 @@ import { useContext } from "react";
 import GlobalContext from "../../GlobalContext";
 import Header from "../../components/header";
 import NotesCategory from "../../components/notesCategory";
-
-const notesCategoryWrapper = {
-  display: "flex",
-  flexWrap: "wrap",
-  marginTop: "20px",
-};
+import { NotesCategoryWrapper } from "./NotesCategories";
 
 const NotesCategories = () => {
   const { notes } = useContext(GlobalContext);
@@ -19,11 +14,11 @@ const NotesCategories = () => {
   return (
     <>
       <Header withButton={true} mainPage={true} />
-      <div style={notesCategoryWrapper}>
+      <NotesCategoryWrapper>
         {getCategories().map((category) => (
           <NotesCategory category={category} key={`${category}id`} />
         ))}
-      </div>
+      </NotesCategoryWrapper>
     </>
   );
 };

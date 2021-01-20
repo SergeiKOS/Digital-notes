@@ -17,9 +17,10 @@ export const NoteHeaderWrapper = styled.div`
 export const NotesHeader = styled.h2`
   color: ${colors.dark};
   margin-right: 5px;
-  max-width: 242px;
+  max-width: 236px;
   margin-top: 3px;
   overflow: hidden;
+  padding-left: 10px;
 `;
 
 export const NotesHeaderForm = styled.form`

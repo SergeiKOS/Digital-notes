@@ -5,6 +5,7 @@ export const NoteCard = styled.div`
   background-color: ${colors.almostWhite};
   margin-bottom: 10px;
   padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 6px;
   font-size: 14px;
   max-height: 127px;
@@ -19,6 +20,7 @@ export const NoteCard = styled.div`
     cursor: pointer;
     align-self: flex-end;
     padding: 10px;
+    margin-right: -10px;
 
     &:hover .trash-icon {
       color: ${colors.redHover};
@@ -39,7 +41,7 @@ export const NoteText = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  width: 240px;
+  margin-right: 20px;
   margin-bottom: 4px;
   margin-top: ${({ textClean, noteHeader }) =>
     textClean.length > 0 && noteHeader.length < 1 ? "-28px" : "-10px"};
