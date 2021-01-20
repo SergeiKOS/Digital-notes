@@ -48,6 +48,8 @@ const NotesCategory = ({ category }) => {
         text: "",
       },
     ]);
+
+    setIsCollapsed(false)
   };
 
   return (
