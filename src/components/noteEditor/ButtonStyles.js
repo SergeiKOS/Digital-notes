@@ -19,4 +19,9 @@ export const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;

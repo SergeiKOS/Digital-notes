@@ -17,8 +17,7 @@ export const NotesCategoryContainer = styled.div`
 
   & .notes-category-container-header {
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
     margin-bottom: 5px;
   }
 `;
@@ -27,16 +26,30 @@ export const NotesWrapper = styled.div`
   background-color: #62c9c4;
   padding: 10px;
   padding-bottom: 1px;
-  /* display: none; */
-  /* background-color: red; */
 `;
 
+export const CollapseCategory = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px 3px 0px 3px;
+
+  &:hover {
+    color: ${colors.grayHover};
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
 export const AddNote = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
   font-size: 36px;
   line-height: 0;
+  padding-right: 10px;
 
   &:hover {
     color: ${colors.grayHover};

@@ -20,7 +20,6 @@ export const NotesHeader = styled.h2`
   max-width: 236px;
   margin-top: 3px;
   overflow: hidden;
-  padding-left: 10px;
 `;
 
 export const NotesHeaderForm = styled.form`
@@ -64,5 +63,9 @@ export const NotesHeaderEdit = styled.button`
     &:hover {
       color: ${colors.grayHover}!important;
     }
+  }
+  &:focus {
+    outline: none;
+    border: none;
   }
 `;
