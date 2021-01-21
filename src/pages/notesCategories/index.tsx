@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import GlobalContext from "../../GlobalContext";
+import Note from "../../types/Note";
 import Header from "../../components/header";
 import NotesCategory from "../../components/notesCategory";
 import { NotesCategoryWrapper } from "./NotesCategories";
@@ -8,7 +9,7 @@ const NotesCategories = () => {
   const { notes } = useContext(GlobalContext);
 
   const getCategories = () => {
-    return [...new Set(notes.map((note) => note.category))];
+    return [...new Set(notes.map((note: Note) => note.category))];
   };
 
   return (

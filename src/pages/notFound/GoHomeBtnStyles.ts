@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
-import { Link } from "react-router-dom";
 
-const GoHome = styled.button`
+export const GoHome = styled.button`
   cursor: pointer;
   padding: 20px;
   padding-left: 40px;
@@ -28,13 +27,3 @@ const GoHome = styled.button`
     color: lightgray;
   }
 `;
-
-const GoHomeBtn = () => {
-  return (
-    <GoHome>
-      <Link to="/">Go Back Home</Link>
-    </GoHome>
-  );
-};
-
-export default GoHomeBtn;

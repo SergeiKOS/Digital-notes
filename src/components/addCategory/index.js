@@ -19,11 +19,11 @@ const AddCategory = () => {
   const [userInputCategory, setUserInputCategory] = useState("");
   const [sameNameError, setSameNameError] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e) => {
     setUserInputCategory(e.target.value);
   };
 
-  const handleSubmitCategory = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmitCategory = (e) => {
     e.preventDefault();
     let notesCopy = [...notes];
 

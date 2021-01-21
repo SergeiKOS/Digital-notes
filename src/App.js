@@ -22,7 +22,7 @@ const initialState = [
   },
 ];
 
-function App() {
+const App = () => {
   const [notes, setNotes] = useState(
     () => JSON.parse(localStorage.getItem("userInput")) || initialState
   );
@@ -47,6 +47,6 @@ function App() {
       </Switch>
     </GlobalContext.Provider>
   );
-}
+};
 
 export default App;

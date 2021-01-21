@@ -1,4 +1,4 @@
 export default interface IHeader {
-  withButton: boolean;
-  mainPage: boolean;
+  withButton?: boolean;
+  mainPage?: boolean;
 }

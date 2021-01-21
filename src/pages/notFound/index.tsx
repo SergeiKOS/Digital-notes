@@ -1,5 +1,6 @@
 import { NotFoundWrapper } from "./NotFoundStyles";
 import Header from "../../components/header";
+//@ts-ignore
 import { ReactComponent as NotFoundSVG } from "./not-found.svg";
 import GoHome from "./GoHomeBtn";
 
