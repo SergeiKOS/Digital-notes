@@ -1,6 +1,7 @@
+import ISvgIcon from "./ISvgIcon.interface";
 import { IconContext } from "react-icons";
 
-const SvgIcon = ({ color, size, children }) => {
+const SvgIcon: React.FC<ISvgIcon> = ({ color, size, children }) => {
   return (
     <IconContext.Provider value={{ color, size }}>
       {children}

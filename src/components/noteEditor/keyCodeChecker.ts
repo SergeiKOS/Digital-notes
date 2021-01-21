@@ -1,7 +1,7 @@
-let buffer = [];
-const keys = [17, 16, 83];
-export const keyCodeChecker = (e) => {
-  buffer.push(e.keyCode);
+let buffer: string[] = [];
+const keys = ["Control", "Shift", "s"];
+export const keyCodeChecker = (e: KeyboardEvent) => {
+  buffer.push(e.key);
 
   setTimeout(() => {
     buffer = [];

@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect, useRef } from "react";
+import Note from "../../types/Note";
 import GlobalContext from "../../GlobalContext";
 import { useParams } from "react-router-dom";
 import { Prompt } from "react-router";
@@ -23,27 +24,27 @@ const NoteEditor = () => {
   const [headerInput, setHeaderInput] = useState(true);
   const { notes, setNotes } = useContext(GlobalContext);
   const { visible, handleVisibility } = useModal();
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [currentNoteEditorState, setCurrentNoteEditorState] = useState(
-    notes.filter((note) => note.id === id)[0]
+    notes.filter((note: Note) => note.id === id)[0]
   );
-  const inputRef = useRef(null);
-  const quillRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const quillRef = useRef<ReactQuill>(null);
   const [notSave, setNotSave] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true); // for ReactQuill because it invokes handleChange with first render
 
-  useEffect(() => {
+  useEffect((): (() => void) => {
     window.onbeforeunload = () => "";
 
     if (currentNoteEditorState?.text.length === 0) {
-      quillRef.current.focus();
+      quillRef.current?.focus();
     }
 
     return () => (window.onbeforeunload = null);
   }, []);
 
   useEffect(() => {
-    const keyCodeCheckerCallback = (e) => {
+    const keyCodeCheckerCallback = (e: KeyboardEvent) => {
       if (keyCodeChecker(e)) handleSave();
     };
     window.addEventListener("keydown", keyCodeCheckerCallback);
@@ -51,7 +52,7 @@ const NoteEditor = () => {
     return () => window.removeEventListener("keydown", keyCodeCheckerCallback);
   }, [currentNoteEditorState]);
 
-  const handleNoteHeaderChange = (e) => {
+  const handleNoteHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNotSave(true);
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
@@ -59,7 +60,7 @@ const NoteEditor = () => {
     });
   };
 
-  const handleChange = (text) => {
+  const handleChange = (text: string) => {
     if (!initialLoading) {
       setNotSave(true);
     } else {
@@ -76,7 +77,7 @@ const NoteEditor = () => {
     handleVisibility();
   };
 
-  const handleDeleteConfirmation = (deleteConfirmation) => {
+  const handleDeleteConfirmation = (deleteConfirmation: boolean) => {
     handleVisibility();
     if (deleteConfirmation) {
       setNotSave(false);
@@ -99,7 +100,7 @@ const NoteEditor = () => {
 
   const handleEditHeaderName = () => {
     setHeaderInput(true);
-    setTimeout(() => inputRef.current.focus(), 0);
+    setTimeout(() => inputRef.current?.focus(), 0);
   };
 
   const handleSubmit = () => {
@@ -120,7 +121,7 @@ const NoteEditor = () => {
               onChange={handleNoteHeaderChange}
               onBlur={handleSubmit}
               ref={inputRef}
-              placeholder='Title...'
+              placeholder="Title..."
             />
           </NoteHeaderForm>
         ) : (
@@ -139,7 +140,7 @@ const NoteEditor = () => {
             defaultValue={currentNoteEditorState.text}
             onChange={handleChange}
             ref={quillRef}
-            placeholder='Text...'
+            placeholder="Text..."
           />
           <div className="custom-quill-footer">
             <Tippy content="Delete note">
