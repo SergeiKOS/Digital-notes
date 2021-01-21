@@ -1,15 +1,18 @@
-import ReactDOM from "react-dom";
+import { createPortal } from "react-dom";
+import IModal from "./IModal.interface";
 import { Overlay, ModalWindow, CloseButton } from "./ModalStyles";
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<IModal> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
-  const modalClick = (e) => {
+  const modalClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ): void => {
     // this click only for block click from overlay
     e.stopPropagation();
   };
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <Overlay onClick={onClose}>
       <ModalWindow onClick={modalClick} role="dialog" aria-modal="true">
         <div>{children}</div>
@@ -18,7 +21,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         </CloseButton>
       </ModalWindow>
     </Overlay>,
-    document.getElementById("portal")
+    document.getElementById("portal")!
   );
 };
 
