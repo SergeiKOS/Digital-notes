@@ -19,11 +19,11 @@ const AddCategory = () => {
   const [userInputCategory, setUserInputCategory] = useState("");
   const [sameNameError, setSameNameError] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInputCategory(e.target.value);
   };
 
-  const handleSubmitCategory = (e) => {
+  const handleSubmitCategory = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     let notesCopy = [...notes];
 
@@ -34,7 +34,7 @@ const AddCategory = () => {
     );
 
     if (!ifSameTitle) {
-      handleVisibility(false);
+      handleVisibility();
       setNotes([
         ...notesCopy,
         {
@@ -76,9 +76,7 @@ const AddCategory = () => {
           {sameNameError && (
             <ModalInputError>Names can't be the same</ModalInputError>
           )}
-          <ModalButtonConfirm type="button" onClick={handleSubmitCategory}>
-            Confirm name
-          </ModalButtonConfirm>
+          <ModalButtonConfirm type="submit">Confirm name</ModalButtonConfirm>
         </form>
       </Modal>
     </>
