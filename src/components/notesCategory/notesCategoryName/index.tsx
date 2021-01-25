@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef } from "react";
+import Note from "../../../types/Note";
 import GlobalContext from "../../../GlobalContext";
 import { IoMdCreate } from "react-icons/io";
 import SvgIcon from "../../SvgIcon";
@@ -15,38 +16,42 @@ import {
 } from "./NotesCategoryName";
 import { addDotsInTheEndOfLongText } from "../addDotsInTheEndOfLongText";
 
-const NotesCategoryName = ({ category }) => {
+const NotesCategoryName = ({ category }: any) => {
   const [userInputCategory, setUserInputCategory] = useState(category);
   const [headerInput, setHeaderInput] = useState(false);
   const { notes, setNotes } = useContext(GlobalContext);
   const [sameNameError, setSameNameError] = useState(false);
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleEditCategoryName = () => {
     setHeaderInput(true);
-    setTimeout(() => inputRef.current.focus(), 0);
+    setTimeout(() => inputRef.current!.focus(), 0);
   };
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInputCategory(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.FocusEvent<HTMLInputElement>
+  ) => {
     e.preventDefault();
 
     let ifSameTitle;
     if (category === userInputCategory) {
       ifSameTitle = false;
     } else {
-      ifSameTitle = notes.find((note) => note.category === userInputCategory);
+      ifSameTitle = notes.find(
+        (note: Note) => note.category === userInputCategory
+      );
     }
 
     if (!ifSameTitle) {
       setHeaderInput(false);
       setSameNameError(false);
       setNotes(
-        notes.map((note) =>
+        notes.map((note: Note) =>
           note.category === category
             ? { ...note, category: userInputCategory }
             : note
@@ -54,7 +59,7 @@ const NotesCategoryName = ({ category }) => {
       );
     } else {
       setSameNameError(true);
-      inputRef.current.focus();
+      inputRef.current!.focus();
     }
   };
 

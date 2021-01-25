@@ -15,7 +15,7 @@ import {
 } from "./NotesCategoryStyles";
 import NotesItem from "./notesItem";
 
-const NotesCategory = ({ category }) => {
+const NotesCategory = ({ category }: any) => {
   const { notes, setNotes } = useContext(GlobalContext);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -49,7 +49,7 @@ const NotesCategory = ({ category }) => {
       },
     ]);
 
-    setIsCollapsed(false)
+    setIsCollapsed(false);
   };
 
   return (
