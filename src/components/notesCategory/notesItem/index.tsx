@@ -12,18 +12,31 @@ import useModal from "../../../customHooks/useModal";
 import Modal from "../../modal";
 import { ModalMessage, ModalButtonsWrapper } from "../../modal/ModalStyles";
 
-const NotesItem = ({ notesItem: { id, noteHeader, text } }) => {
+interface NoteItem {
+  notesItem: {
+    id: string;
+    noteHeader: string;
+    text: string;
+  };
+}
+
+const NotesItem = ({ notesItem: { id, noteHeader, text } }: NoteItem) => {
   const { notes, setNotes } = useContext(GlobalContext);
   const { visible, handleVisibility } = useModal();
 
   const textClean = text.replace(/(<([^>]+)>)/gi, "");
 
-  const toggleModal = (e) => {
+  const toggleModal = (
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>
+  ) => {
     e.preventDefault();
     handleVisibility();
   };
 
-  const handleDeleteConfirmation = (e, deleteConfirmation) => {
+  const handleDeleteConfirmation = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    deleteConfirmation: boolean
+  ) => {
     toggleModal(e);
     if (deleteConfirmation) {
       setNotes(filterArrayById(notes, id));

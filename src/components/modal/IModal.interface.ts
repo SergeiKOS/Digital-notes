@@ -1,4 +1,6 @@
 export default interface IModal {
   isOpen: boolean;
-  onClose(): void;
+  onClose(
+    e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>
+  ): void;
 }

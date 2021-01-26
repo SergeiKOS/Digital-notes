@@ -43,6 +43,11 @@ export const NoteText = styled.div`
   -webkit-box-orient: vertical;
   margin-right: 20px;
   margin-bottom: 4px;
-  margin-top: ${({ textClean, noteHeader }) =>
-    textClean.length > 0 && noteHeader.length < 1 ? "-28px" : "-10px"};
+  margin-top: ${({
+    textClean,
+    noteHeader,
+  }: {
+    textClean: string;
+    noteHeader: string;
+  }) => (textClean.length > 0 && noteHeader.length < 1 ? "-28px" : "-10px")};
 `;
