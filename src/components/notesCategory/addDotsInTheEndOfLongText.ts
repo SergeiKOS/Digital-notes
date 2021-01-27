@@ -1,4 +1,4 @@
-export const addDotsInTheEndOfLongText = (text, charactersAmount) => {
+export const addDotsInTheEndOfLongText = (text: string, charactersAmount: number) : string => {
   const cutText = text.slice(0, charactersAmount);
 
   if (cutText.length === charactersAmount) {
