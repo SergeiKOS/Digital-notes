@@ -37,10 +37,8 @@ const NotesCategory = ({ category }: any) => {
   };
 
   const handleAddNote = () => {
-    let notesCopy = [...notes];
-
     setNotes([
-      ...notesCopy,
+      ...notes,
       {
         id: uuidv4(),
         category: category,

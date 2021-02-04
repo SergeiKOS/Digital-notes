@@ -172,6 +172,7 @@ const NoteEditor = () => {
             <button
               className="modal-buttons-wrapper--cancel"
               type="button"
+              autoFocus={true}
               onClick={() => handleDeleteConfirmation(false)}
             >
               Cancel
