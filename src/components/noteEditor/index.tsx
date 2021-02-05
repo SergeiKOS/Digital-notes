@@ -41,7 +41,7 @@ const NoteEditor = () => {
     }
 
     return () => (window.onbeforeunload = null);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const keyCodeCheckerCallback = (e: KeyboardEvent) => {
@@ -50,7 +50,7 @@ const NoteEditor = () => {
     window.addEventListener("keydown", keyCodeCheckerCallback);
 
     return () => window.removeEventListener("keydown", keyCodeCheckerCallback);
-  }, [currentNoteEditorState]);
+  }, [currentNoteEditorState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleNoteHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNotSave(true);
