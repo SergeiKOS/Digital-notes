@@ -52,7 +52,9 @@ const NoteEditor = () => {
     return () => window.removeEventListener("keydown", keyCodeCheckerCallback);
   }, [currentNoteEditorState]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleNoteHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNoteHeaderChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setNotSave(true);
     setCurrentNoteEditorState({
       ...currentNoteEditorState,
@@ -60,7 +62,7 @@ const NoteEditor = () => {
     });
   };
 
-  const handleChange = (text: string) => {
+  const handleChange = (text: string): void => {
     if (!initialLoading) {
       setNotSave(true);
     } else {
@@ -73,11 +75,11 @@ const NoteEditor = () => {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (): void => {
     handleVisibility();
   };
 
-  const handleDeleteConfirmation = (deleteConfirmation: boolean) => {
+  const handleDeleteConfirmation = (deleteConfirmation: boolean): void => {
     handleVisibility();
     if (deleteConfirmation) {
       setNotSave(false);
@@ -88,7 +90,7 @@ const NoteEditor = () => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     setNotSave(false);
     let notesCopy = [...notes];
 
@@ -98,12 +100,12 @@ const NoteEditor = () => {
     setRedirect(true);
   };
 
-  const handleEditHeaderName = () => {
+  const handleEditHeaderName = (): void => {
     setHeaderInput(true);
     setTimeout(() => inputRef.current?.focus(), 0);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     setHeaderInput(false);
   };
 

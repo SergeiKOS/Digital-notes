@@ -3,7 +3,7 @@ import { useState } from "react";
 const useModal = () => {
   const [visible, setVisible] = useState(false);
 
-  const handleVisibility = () => {
+  const handleVisibility = (): void => {
     setVisible(!visible);
   };
 
