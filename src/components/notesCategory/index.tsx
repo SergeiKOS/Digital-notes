@@ -54,7 +54,7 @@ const NotesCategory = ({ category }: any) => {
     <NotesCategoryContainer>
       <div className="notes-category-container-header">
         <Tippy content={`${!isCollapsed ? "Collapse" : "Uncollapse"} category`}>
-          <CollapseCategory onClick={handleCategoryCollapse} type="button">
+          <CollapseCategory onClick={handleCategoryCollapse} type="button" aria-label="Collapse category">
             <SvgIcon size={"20px"}>
               {!isCollapsed ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </SvgIcon>
