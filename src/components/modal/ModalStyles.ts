@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
 
-export const Overlay = styled.div`
+export const ModalContainerOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   z-index: 1;
 `;
 
-export const ModalWindow = styled.div`
+export const ModalContent = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
