@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import Note from "../../types/Note";
 import GlobalContext from "../../GlobalContext";
 import { useParams } from "react-router-dom";
@@ -30,6 +30,7 @@ const NoteEditor = () => {
   );
   const inputRef = useRef<HTMLInputElement>(null);
   const quillRef = useRef<ReactQuill>(null);
+  const saveRef = useRef<HTMLButtonElement>(null);
   const [notSave, setNotSave] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true); // for ReactQuill because it invokes handleChange with first render
 
@@ -51,6 +52,17 @@ const NoteEditor = () => {
 
     return () => window.removeEventListener("keydown", keyCodeCheckerCallback);
   }, [currentNoteEditorState]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    const keyDownQuillCallback = (e: KeyboardEvent) => {
+      if (e.key === "Tab") quillRef.current?.blur();
+    };
+
+    window.addEventListener("keydown", keyDownQuillCallback);
+    return () => {
+      window.removeEventListener("keydown", keyDownQuillCallback);
+    };
+  }, []);
 
   const handleNoteHeaderChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -145,17 +157,17 @@ const NoteEditor = () => {
             placeholder="Text..."
           />
           <div className="custom-quill-footer">
+            <Tippy content="Ctrl + Shift + S">
+              <SaveButton onClick={handleSave} ref={saveRef} type="button">
+                Save
+              </SaveButton>
+            </Tippy>
             <Tippy content="Delete note">
               <DeleteButton onClick={handleDelete} type="button">
                 <SvgIcon size={"40px"}>
                   <IoMdTrash className="trash-icon" />
                 </SvgIcon>
               </DeleteButton>
-            </Tippy>
-            <Tippy content="Ctrl + Shift + S">
-              <SaveButton onClick={handleSave} type="button">
-                Save
-              </SaveButton>
             </Tippy>
           </div>
         </div>
