@@ -1,7 +1,7 @@
 let buffer: string[] = [];
-const keys = ["Control", "Shift", "s"];
+const keys = ["control", "shift", "s"];
 export const keyCodeChecker = (e: KeyboardEvent) => {
-  buffer.push(e.key);
+  buffer.push(e.key.toLowerCase());
 
   setTimeout(() => {
     buffer = [];
