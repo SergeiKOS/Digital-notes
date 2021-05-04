@@ -9,7 +9,7 @@ const Logo = ({ mainPage }: ILogo) => {
       {mainPage ? (
         <Logotype />
       ) : (
-        <Link to="/">
+        <Link style={{ fontSize: 0 }} to="/">
           <Logotype />
         </Link>
       )}
