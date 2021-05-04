@@ -118,7 +118,7 @@ const NoteEditor = () => {
   };
 
   const handleSubmit = (): void => {
-    setHeaderInput(false);
+    currentNoteEditorState.noteHeader.length !== 0 && setHeaderInput(false);
   };
 
   if (redirect) {
