@@ -1,6 +1,6 @@
 import ILogo from "./ILogo.interface";
-import { LogoType } from "./LogoStyles";
-import { Link } from "react-router-dom";
+import { LogoType, LogoLink } from "./LogoStyles";
+// import { Link } from "react-router-dom";
 import { ReactComponent as Logotype } from "./dn-logo.svg";
 
 const Logo = ({ mainPage }: ILogo) => {
@@ -9,9 +9,9 @@ const Logo = ({ mainPage }: ILogo) => {
       {mainPage ? (
         <Logotype />
       ) : (
-        <Link style={{ fontSize: 0 }} to="/">
+        <LogoLink to="/">
           <Logotype />
-        </Link>
+        </LogoLink>
       )}
     </LogoType>
   );
