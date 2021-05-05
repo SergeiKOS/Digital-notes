@@ -34,15 +34,9 @@ const NoteEditor = () => {
   const [notSave, setNotSave] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true); // for ReactQuill because it invokes handleChange with first render
 
-  useEffect((): (() => void) => {
-    window.onbeforeunload = () => "";
-
-    if (currentNoteEditorState?.text.length === 0) {
-      quillRef.current?.focus();
-    }
-
-    return () => (window.onbeforeunload = null);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const keyCodeCheckerCallback = (e: KeyboardEvent) => {
