@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../commonStyles/variables";
+import { Link } from "react-router-dom";
 
 export const NotesCategoryContainer = styled.div`
   padding-top: 0;
@@ -19,6 +20,9 @@ export const NotesCategoryContainer = styled.div`
     display: flex;
     gap: 5px;
     margin-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 2px;
+    padding-top: 2px;
   }
 `;
 
@@ -28,19 +32,24 @@ export const NotesWrapper = styled.div`
   padding-bottom: 1px;
 `;
 
+export const NotesItemLink = styled(Link)`
+  display: block;
+  &:focus {
+    outline: 1px solid ${colors.dark};
+  }
+`;
+
 export const CollapseCategory = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  padding: 5px 3px 0px 3px;
 
   &:hover {
     color: ${colors.grayHover};
   }
 
   &:focus {
-    outline: none;
-    border: none;
+    outline: 2px solid ${colors.dark};
   }
 `;
 export const AddNote = styled.button`
@@ -49,18 +58,8 @@ export const AddNote = styled.button`
   cursor: pointer;
   font-size: 36px;
   line-height: 0;
-  padding-right: 10px;
-
-  &:hover {
-    color: ${colors.grayHover};
-  }
-
-  &:active {
-    font-size: 34px;
-  }
 
   &:focus {
-    outline: none;
-    border: none;
+    outline: 2px solid ${colors.dark};
   }
 `;

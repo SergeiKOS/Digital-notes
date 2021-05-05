@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -12,6 +11,7 @@ import {
   NotesWrapper,
   CollapseCategory,
   AddNote,
+  NotesItemLink,
 } from "./NotesCategoryStyles";
 import NotesItem from "./notesItem";
 
@@ -54,7 +54,11 @@ const NotesCategory = ({ category }: any) => {
     <NotesCategoryContainer>
       <div className="notes-category-container-header">
         <Tippy content={`${!isCollapsed ? "Collapse" : "Uncollapse"} category`}>
-          <CollapseCategory onClick={handleCategoryCollapse} type="button" aria-label="Collapse category">
+          <CollapseCategory
+            onClick={handleCategoryCollapse}
+            type="button"
+            aria-label="Collapse category"
+          >
             <SvgIcon size={"20px"}>
               {!isCollapsed ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </SvgIcon>
@@ -70,9 +74,9 @@ const NotesCategory = ({ category }: any) => {
       {!isCollapsed && (
         <NotesWrapper>
           {getNotesFromCategory().map((note) => (
-            <Link to={`/edit-note/${note.id}`} key={note.id}>
+            <NotesItemLink to={`/edit-note/${note.id}`} key={note.id}>
               <NotesItem notesItem={note} />
-            </Link>
+            </NotesItemLink>
           ))}
         </NotesWrapper>
       )}

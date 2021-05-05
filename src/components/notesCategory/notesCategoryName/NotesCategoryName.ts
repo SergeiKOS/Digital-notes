@@ -59,13 +59,7 @@ export const NotesHeaderEdit = styled.button`
   border: none;
   cursor: pointer;
 
-  & .edit-icon {
-    &:hover {
-      color: ${colors.grayHover}!important;
-    }
-  }
   &:focus {
-    outline: none;
-    border: none;
+    outline: 2px solid ${colors.dark};
   }
 `;

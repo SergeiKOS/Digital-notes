@@ -14,16 +14,22 @@ export const NoteCard = styled.div`
   & .note-header-wrapper {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 2px;
   }
 
   & .trash-icon-wrapper {
     cursor: pointer;
     align-self: flex-end;
-    padding: 10px;
-    margin-right: -10px;
+    padding: 7px;
+    margin-top: 2px;
+    margin-right: -8px;
 
     &:hover .trash-icon {
       color: ${colors.redHover};
+    }
+
+    &:focus {
+      outline: 2px solid ${colors.dark};
     }
   }
 
