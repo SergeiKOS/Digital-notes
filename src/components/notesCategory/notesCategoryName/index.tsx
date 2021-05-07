@@ -86,6 +86,8 @@ const NotesCategoryName = ({ category }: any) => {
         <NotesHeaderEdit
           onClick={handleEditCategoryName}
           aria-label="edit category"
+          whileHover={{ opacity: 0.8 }}
+          transition={{ duration: 0.2 }}
         >
           {headerInput ? (
             ""

@@ -9,6 +9,7 @@ export const SaveButton = styled.button`
   font-size: inherit;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
 
   &:hover {
     background-color: ${colors.greenHover};

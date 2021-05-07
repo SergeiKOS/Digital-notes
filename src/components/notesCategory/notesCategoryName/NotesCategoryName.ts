@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { colors } from "../../../commonStyles/variables";
 
 export const NoteHeaderWrapper = styled.div`
@@ -20,6 +21,11 @@ export const NotesHeader = styled.h2`
   max-width: 236px;
   margin-top: 3px;
   overflow: hidden;
+  transition: color 0.2s;
+
+  &:hover {
+    color: ${colors.grayHover};
+  }
 `;
 
 export const NotesHeaderForm = styled.form`
@@ -54,7 +60,7 @@ export const NotesHeaderError = styled.small`
   font-size: 14px;
 `;
 
-export const NotesHeaderEdit = styled.button`
+export const NotesHeaderEdit = styled(motion.button)`
   background-color: transparent;
   border: none;
   cursor: pointer;

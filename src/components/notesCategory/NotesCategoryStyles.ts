@@ -43,6 +43,7 @@ export const CollapseCategory = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  transition: color 0.2s;
 
   &:hover {
     color: ${colors.grayHover};
@@ -58,8 +59,13 @@ export const AddNote = styled.button`
   cursor: pointer;
   font-size: 36px;
   line-height: 0;
+  transition: color 0.2s;
 
   &:focus {
     outline: 2px solid ${colors.dark};
+  }
+
+  &:hover {
+    color: ${colors.grayHover};
   }
 `;

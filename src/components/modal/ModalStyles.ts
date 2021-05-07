@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { colors } from "../../commonStyles/variables";
 
 export const ModalContainerOverlay = styled.div`
@@ -12,11 +13,16 @@ export const ModalContainerOverlay = styled.div`
   z-index: 1;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContentWrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+`;
+
+export const ModalContent = styled(motion.div)`
+  position: relative;
+  top: -100px;
+  left: -50%;
   background-color: #fff;
   padding-top: 50px;
   padding-bottom: 20px;
@@ -41,11 +47,16 @@ export const CloseButton = styled.button`
   cursor: pointer;
   color: ${colors.light};
   transform: rotate(45deg);
+  transition: color 0.2s;
 
   &:focus,
   &:active {
     outline: none;
     color: ${colors.dark};
+  }
+
+  &:hover {
+    color: ${colors.lightDark};
   }
 `;
 
@@ -67,6 +78,7 @@ export const ModalButtonsWrapper = styled.div`
     border: none;
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.2s;
   }
 
   & .modal-buttons-wrapper--confirm {
@@ -117,6 +129,7 @@ export const ModalButtonConfirm = styled.button`
   font-size: 16px;
   background-color: ${colors.green};
   cursor: pointer;
+  transition: background-color 0.2s;
 
   &:hover {
     background-color: ${colors.greenHover};
