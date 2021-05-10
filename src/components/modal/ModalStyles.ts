@@ -80,6 +80,11 @@ export const ModalButtonsWrapper = styled.div`
     color: #fff;
     cursor: pointer;
     transition: background-color 0.2s;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px ${colors.dark};
+    }
   }
 
   & .modal-buttons-wrapper--confirm {
