@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useContext } from "react";
+
 import { v4 as uuidv4 } from "uuid";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+
 import GlobalContext from "../../GlobalContext";
 import { AddCategoryBtn } from "./AddCategoryBtn";
 import useModal from "../../customHooks/useModal";

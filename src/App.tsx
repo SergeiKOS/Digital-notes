@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import Note from "./types/Note";
+
 import { Route, Switch, Redirect } from "react-router-dom";
+
+import Note from "./types/Note";
 import GlobalContext from "./GlobalContext";
 import NotFound from "./pages/notFound";
 import NotesCategories from "./pages/notesCategories";

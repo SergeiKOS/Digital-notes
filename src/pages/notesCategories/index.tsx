@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import GlobalContext from "../../GlobalContext";
 import Note from "../../types/Note";
 import Header from "../../components/header";

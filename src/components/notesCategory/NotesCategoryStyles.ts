@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { colors } from "../../commonStyles/variables";
 import { Link } from "react-router-dom";
+
+import { colors } from "../../commonStyles/variables";
 
 export const NotesCategoryContainer = styled.div`
   padding-top: 0;

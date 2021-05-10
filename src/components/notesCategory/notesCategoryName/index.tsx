@@ -1,10 +1,12 @@
 import React, { useState, useContext, useRef } from "react";
-import Note from "../../../types/Note";
-import GlobalContext from "../../../GlobalContext";
+
 import { IoMdCreate } from "react-icons/io";
-import SvgIcon from "../../SvgIcon";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+
+import Note from "../../../types/Note";
+import GlobalContext from "../../../GlobalContext";
+import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
 import {
   NoteHeaderWrapper,

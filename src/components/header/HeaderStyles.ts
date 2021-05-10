@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { colors } from "../../commonStyles/variables";
 
 export const HeaderWrapper = styled.div`

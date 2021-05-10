@@ -1,5 +1,6 @@
-import { GoHome } from "./GoHomeBtnStyles";
 import { Link } from "react-router-dom";
+
+import { GoHome } from "./GoHomeBtnStyles";
 
 const GoHomeBtn = () => {
   return (

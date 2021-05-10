@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
 import { colors } from "../../commonStyles/variables";
 
 export const ModalContainerOverlay = styled.div`

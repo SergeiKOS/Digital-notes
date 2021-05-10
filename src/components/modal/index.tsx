@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+
 import FocusTrap from "focus-trap-react";
+
 import IModal from "./IModal.interface";
 import {
   ModalContainerOverlay,

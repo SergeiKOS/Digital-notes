@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import Note from "../../types/Note";
-import GlobalContext from "../../GlobalContext";
-import { useParams } from "react-router-dom";
+
+import { useParams, Redirect } from "react-router-dom";
 import { Prompt } from "react-router";
-import { Redirect } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import "./CustomQuillStyles.css";
 import { IoMdTrash } from "react-icons/io";
-import SvgIcon from "../SvgIcon";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+
+import Note from "../../types/Note";
+import GlobalContext from "../../GlobalContext";
+import "./CustomQuillStyles.css";
+import SvgIcon from "../SvgIcon";
 import { NoteHeaderTitle, NoteHeaderForm, NoteHeaderInput } from "./NoteEditor";
 import { SaveButton, DeleteButton } from "./ButtonStyles";
 import { filterArrayById } from "../../utils";
