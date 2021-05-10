@@ -15,15 +15,25 @@ export const SaveButton = styled.button`
   &:hover {
     background-color: ${colors.greenHover};
   }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${colors.almostWhite};
+  }
 `;
 
 export const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
+  border-radius: 5px;
 
   &:focus {
     outline: none;
     border: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px ${colors.almostWhite};
   }
 `;

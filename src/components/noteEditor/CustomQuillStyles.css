@@ -47,6 +47,8 @@
 
 .custom-quill-footer {
   padding-top: 5px;
+  padding-right: 2px;
+  padding-left: 2px;
   padding-bottom: 5px;
   background-color: #17252a;
   display: flex;
