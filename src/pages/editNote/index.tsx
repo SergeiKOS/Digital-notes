@@ -1,13 +1,13 @@
-import { EditNoteStyles } from "./EditNoteStyles";
+import * as S from "./EditNoteStyles";
 import Header from "../../components/header";
 import NoteEditor from "../../components/noteEditor";
 
 const EditNote = () => {
   return (
-    <EditNoteStyles>
+    <S.EditNote>
       <Header />
       <NoteEditor />
-    </EditNoteStyles>
+    </S.EditNote>
   );
 };
 

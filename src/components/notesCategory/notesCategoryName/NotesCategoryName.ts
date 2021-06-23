@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { colors } from "../../../commonStyles/variables";
 
-export const NoteHeaderWrapper = styled.div`
+export const NotesHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-grow: 1;

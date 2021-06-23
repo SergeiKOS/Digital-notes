@@ -9,7 +9,7 @@ import GlobalContext from "../../../GlobalContext";
 import SvgIcon from "../../SvgIcon";
 import { colors } from "../../../commonStyles/variables";
 import {
-  NoteHeaderWrapper,
+  NotesHeaderWrapper,
   NotesHeader,
   NotesHeaderForm,
   NotesHeaderInput,
@@ -66,7 +66,7 @@ const NotesCategoryName = ({ category }: any) => {
   };
 
   return (
-    <NoteHeaderWrapper onClick={handleEditCategoryName}>
+    <NotesHeaderWrapper onClick={handleEditCategoryName}>
       {headerInput ? (
         <NotesHeaderForm onSubmit={handleSubmit}>
           <NotesHeaderInput
@@ -100,7 +100,7 @@ const NotesCategoryName = ({ category }: any) => {
           )}
         </NotesHeaderEdit>
       </Tippy>
-    </NoteHeaderWrapper>
+    </NotesHeaderWrapper>
   );
 };
 
