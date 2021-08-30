@@ -13,15 +13,23 @@ const initialState: Note[] = [
     id: "42d14e98-3021-4841-bf41-2d550e79c76c",
     category: "About app",
     noteHeader: "Attention",
-    text:
-      "<p>Your notes will be stored in your browser in the local storage. If you clear local storage your data will be lost.</p>",
+    text: "<p>Your notes will be stored in your browser in the local storage. If you clear local storage your data will be lost.</p>",
+    stats: {
+      created: "",
+      modified: "",
+      numberOfLetters: "0",
+    },
   },
   {
     id: "4d118fdd-7a94-4d43-adbd-eb1bf58b5ead",
     category: "About app",
     noteHeader: "Hot keys",
-    text:
-      "<h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li><li>Ctrl + Shift + s -> save note and exit</li></ul>",
+    text: "<h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li><li>Ctrl + Shift + s -> save note and exit</li></ul>",
+    stats: {
+      created: "",
+      modified: "",
+      numberOfLetters: "0",
+    },
   },
 ];
 
@@ -30,9 +38,10 @@ const App = () => {
     () => JSON.parse(localStorage.getItem("userInput")!) || initialState
   );
 
-  useEffect(() => localStorage.setItem("userInput", JSON.stringify(notes)), [
-    notes,
-  ]);
+  useEffect(
+    () => localStorage.setItem("userInput", JSON.stringify(notes)),
+    [notes]
+  );
 
   return (
     <GlobalContext.Provider value={{ notes, setNotes }}>

@@ -44,6 +44,11 @@ const AddCategory = () => {
           category: userInputCategory,
           noteHeader: "",
           text: "",
+          stats: {
+            created: "",
+            modified: "",
+            numberOfLetters: "0",
+          },
         },
       ]);
       setUserInputCategory("");

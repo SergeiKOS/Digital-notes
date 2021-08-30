@@ -18,11 +18,22 @@
   font-size: 16px;
 }
 
+.custom-quill .note-stats {
+  font-size: 14px;
+  border: 1px solid #000;
+  text-align: right;
+  padding-right: 10px;
+}
+
 .quill > .ql-container > .ql-editor.ql-blank::before {
   color: #17252a;
   opacity: 0.5;
   font-style: normal;
   margin-left: -6px;
+}
+
+.ql-editor p {
+  padding-right: 10px;
 }
 
 .custom-quill .ql-toolbar.ql-snow {

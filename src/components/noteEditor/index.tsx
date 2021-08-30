@@ -19,6 +19,7 @@ import { keyCodeChecker } from "./keyCodeChecker";
 import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
 import { ModalMessage, ModalButtonsWrapper } from "../modal/ModalStyles";
+import { getDate } from "./getDate";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
@@ -34,6 +35,7 @@ const NoteEditor = () => {
   const saveRef = useRef<HTMLButtonElement>(null);
   const [notSave, setNotSave] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true); // for ReactQuill because it invokes handleChange with first render
+  const [flagForStats, setFlagForStats] = useState(false);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -97,13 +99,28 @@ const NoteEditor = () => {
     }
   };
 
-  const handleSave = (): void => {
-    setNotSave(false);
-    let notesCopy = [...notes];
+  useEffect(() => {
+    if (flagForStats) {
+      setNotSave(false);
+      let notesCopy = [...notes];
 
-    notesCopy = filterArrayById(notesCopy, id);
-    notesCopy.unshift(currentNoteEditorState);
-    setNotes(notesCopy);
+      notesCopy = filterArrayById(notesCopy, id);
+      notesCopy.unshift(currentNoteEditorState);
+      setNotes(notesCopy);
+      setFlagForStats(false);
+    }
+  }, [currentNoteEditorState]);
+  const handleSave = (): void => {
+    setFlagForStats(true);
+
+    setCurrentNoteEditorState({
+      ...currentNoteEditorState,
+      stats: {
+        created: getDate(currentNoteEditorState.stats.created),
+        modified: getDate("getLastDate"), //how many times was modified
+        numberOfLetters: "10000",
+      },
+    });
     setRedirect(true);
   };
 
@@ -151,8 +168,17 @@ const NoteEditor = () => {
             ref={quillRef}
             placeholder="Text..."
           />
+          <section className="note-stats">
+            Created: {currentNoteEditorState.stats.created} | Modified:
+            {currentNoteEditorState.stats.modified} | Number of letters:
+            {currentNoteEditorState.stats.numberOfLetters}
+          </section>
+          <section className="note-stats">
+            Created: ‎December ‎23, ‎2020, ‏‎9:13:29 AM | Modified: 10times.
+            Last time ‎August ‎24, ‎2021, ‏‎6:35:25 AM | Number of letters: 100
+          </section>
           <div className="custom-quill-footer">
-            <Tippy content="Ctrl + Shift + S">
+            <Tippy content="Ctrl + Shift + s">
               <SaveButton onClick={handleSave} ref={saveRef} type="button">
                 Save
               </SaveButton>
