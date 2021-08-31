@@ -99,6 +99,9 @@ const NoteEditor = () => {
     }
   };
 
+  const getLettersAmount = (): number =>
+    quillRef.current?.getEditor().getContents().length()! - 1;
+
   useEffect(() => {
     if (flagForStats) {
       setNotSave(false);
@@ -117,8 +120,14 @@ const NoteEditor = () => {
       ...currentNoteEditorState,
       stats: {
         created: getDate(currentNoteEditorState.stats.created),
-        modified: getDate("getLastDate"), //how many times was modified
-        numberOfLetters: "10000",
+        modified: {
+          lastTime: getDate("getLastDate"),
+          amountOfTimes:
+            currentNoteEditorState.stats.modified.amountOfTimes !== undefined
+              ? currentNoteEditorState.stats.modified.amountOfTimes + 1
+              : 0,
+        },
+        numberOfLetters: getLettersAmount(),
       },
     });
     setRedirect(true);
@@ -169,13 +178,11 @@ const NoteEditor = () => {
             placeholder="Text..."
           />
           <section className="note-stats">
-            Created: {currentNoteEditorState.stats.created} | Modified:
-            {currentNoteEditorState.stats.modified} | Number of letters:
+            Created: {currentNoteEditorState.stats.created} | Modified:{" "}
+            {currentNoteEditorState.stats.modified.amountOfTimes || 0} times,
+            Last time: {currentNoteEditorState.stats.modified.lastTime} | Number
+            of letters:
             {currentNoteEditorState.stats.numberOfLetters}
-          </section>
-          <section className="note-stats">
-            Created: ‎December ‎23, ‎2020, ‏‎9:13:29 AM | Modified: 10times.
-            Last time ‎August ‎24, ‎2021, ‏‎6:35:25 AM | Number of letters: 100
           </section>
           <div className="custom-quill-footer">
             <Tippy content="Ctrl + Shift + s">

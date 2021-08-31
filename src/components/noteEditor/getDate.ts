@@ -1,8 +1,4 @@
 export const getDate = (creationDate: string) => {
-  // Created: ‎December ‎23, ‎2020, ‏‎9:13:29 AM | Modified: ‎August ‎24,
-  // ‎2021, ‏‎6:35:25 AM | Number of letters: 100
-  console.log(typeof creationDate);
-
   const getDateHelper = () => {
     const newCreationDate = new Date();
     const monthNames = [
