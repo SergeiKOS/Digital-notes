@@ -196,7 +196,11 @@ const NoteEditor = () => {
               </SaveButton>
             </Tippy>
             <Tippy content="Delete note">
-              <DeleteButton onClick={handleDelete} type="button">
+              <DeleteButton
+                onClick={handleDelete}
+                type="button"
+                aria-label="Delete note"
+              >
                 <SvgIcon size={"40px"}>
                   <IoMdTrash className="trash-icon" />
                 </SvgIcon>
