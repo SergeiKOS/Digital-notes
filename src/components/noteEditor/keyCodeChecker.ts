@@ -5,7 +5,7 @@ export const keyCodeChecker = (e: KeyboardEvent) => {
 
   setTimeout(() => {
     buffer = [];
-  }, 300);
+  }, 1000);
 
   for (let i = 0; i < buffer.length; i++) {
     if (buffer[i] !== keys[i]) {
