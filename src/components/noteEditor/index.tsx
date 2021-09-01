@@ -155,15 +155,23 @@ const NoteEditor = () => {
     return (
       <>
         {headerInput ? (
-          <NoteHeaderForm onSubmit={handleSubmit}>
-            <NoteHeaderInput
-              value={currentNoteEditorState.noteHeader}
-              onChange={handleNoteHeaderChange}
-              onBlur={handleSubmit}
-              ref={inputRef}
-              placeholder="Title..."
-            />
-          </NoteHeaderForm>
+          <>
+            <NoteHeaderTitle
+              onClick={handleEditHeaderName}
+              className="visually-hidden"
+            >
+              {currentNoteEditorState.noteHeader}
+            </NoteHeaderTitle>
+            <NoteHeaderForm onSubmit={handleSubmit}>
+              <NoteHeaderInput
+                value={currentNoteEditorState.noteHeader}
+                onChange={handleNoteHeaderChange}
+                onBlur={handleSubmit}
+                ref={inputRef}
+                placeholder="Title..."
+              />
+            </NoteHeaderForm>
+          </>
         ) : (
           <NoteHeaderTitle onClick={handleEditHeaderName}>
             {currentNoteEditorState.noteHeader}
