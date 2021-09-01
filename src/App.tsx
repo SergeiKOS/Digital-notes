@@ -15,9 +15,12 @@ const initialState: Note[] = [
     noteHeader: "Attention",
     text: "<p>Your notes will be stored in your browser in the local storage. If you clear local storage your data will be lost.</p>",
     stats: {
-      created: "",
-      modified: "",
-      numberOfLetters: "0",
+      created: "December 22, 2020, 11:05:22 AM",
+      modified: {
+        lastTime: "December 28, 2020, 10:14:36 AM",
+        amountOfTimes: 5,
+      },
+      numberOfLetters: "114",
     },
   },
   {
@@ -26,9 +29,12 @@ const initialState: Note[] = [
     noteHeader: "Hot keys",
     text: "<h2>Hot keys:</h2><ul><li>Ctrl + b -> bold text</li><li>Ctrl + u -> underline text</li><li>Ctrl + z -> undo</li><li>Ctrl + y -> redo</li><li>Ctrl + Shift + s -> save note and exit</li></ul>",
     stats: {
-      created: "",
-      modified: "",
-      numberOfLetters: "0",
+      created: "December 22, 2020, 11:25:51 AM",
+      modified: {
+        lastTime: "December 28, 2020, 10:14:36 AM",
+        amountOfTimes: 4,
+      },
+      numberOfLetters: "131",
     },
   },
 ];

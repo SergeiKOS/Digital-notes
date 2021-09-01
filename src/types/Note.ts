@@ -5,7 +5,10 @@ type Note = {
   text: string;
   stats: {
     created: string;
-    modified: string;
+    modified: {
+      lastTime: string;
+      amountOfTimes: number;
+    };
     numberOfLetters: string;
   };
 };
