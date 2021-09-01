@@ -123,7 +123,7 @@ const NoteEditor = () => {
         modified: {
           lastTime: getDate("getLastDate"),
           amountOfTimes:
-            currentNoteEditorState.stats.modified.amountOfTimes !== undefined
+            currentNoteEditorState.stats.modified.amountOfTimes !== null
               ? currentNoteEditorState.stats.modified.amountOfTimes + 1
               : 0,
         },

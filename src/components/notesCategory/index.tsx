@@ -48,7 +48,10 @@ const NotesCategory = ({ category }: any) => {
         text: "",
         stats: {
           created: "",
-          modified: "",
+          modified: {
+            lastTime: "",
+            amountOfTimes: null,
+          },
           numberOfLetters: "0",
         },
       },
