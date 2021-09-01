@@ -20,6 +20,7 @@ import useModal from "../../customHooks/useModal";
 import Modal from "../modal";
 import { ModalMessage, ModalButtonsWrapper } from "../modal/ModalStyles";
 import { getDate } from "./getDate";
+import { putAriaLabelOnQuillToolbar } from "./putAriaLabelOnQuillToolbar";
 
 const NoteEditor = () => {
   const [redirect, setRedirect] = useState(false);
@@ -59,6 +60,10 @@ const NoteEditor = () => {
     return () => {
       window.removeEventListener("keydown", keyDownQuillCallback);
     };
+  }, []);
+
+  useEffect(() => {
+    putAriaLabelOnQuillToolbar();
   }, []);
 
   const handleNoteHeaderChange = (
