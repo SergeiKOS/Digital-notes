@@ -59,6 +59,7 @@ export const AddNote = styled.button`
   background-color: transparent;
   cursor: pointer;
   font-size: 36px;
+  margin: 5px;
   line-height: 0;
   transition: color 0.2s;
 
