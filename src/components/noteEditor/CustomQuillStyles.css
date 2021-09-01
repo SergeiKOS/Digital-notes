@@ -47,6 +47,13 @@
   margin: 0;
 }
 
+.custom-quill .ql-toolbar button {
+  display: block;
+  margin: 3px;
+  width: 30px;
+  height: 30px;
+}
+
 .custom-quill .ql-snow .ql-picker.ql-header {
   padding: 0;
   margin: 0;
