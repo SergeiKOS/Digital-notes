@@ -66,41 +66,41 @@ const NotesCategoryName = ({ category }: any) => {
   };
 
   return (
-    <NotesHeaderWrapper onClick={handleEditCategoryName}>
-      {headerInput ? (
-        <NotesHeaderForm onSubmit={handleSubmit}>
-          <NotesHeaderInput
-            value={userInputCategory}
-            onChange={handleCategoryChange}
-            onBlur={handleSubmit}
-            ref={inputRef}
-          />
-          {sameNameError && (
-            <NotesHeaderError>Names can't be the same</NotesHeaderError>
-          )}
-        </NotesHeaderForm>
-      ) : (
-        <NotesHeader>
-          {addDotsInTheEndOfLongText(userInputCategory, 30)}
-        </NotesHeader>
-      )}
-      <Tippy content="Edit category">
-        <NotesHeaderEdit
-          onClick={handleEditCategoryName}
-          aria-label="edit category"
-          whileHover={{ opacity: 0.8 }}
-          transition={{ duration: 0.2 }}
-        >
-          {headerInput ? (
-            ""
-          ) : (
+    <>
+      <NotesHeaderWrapper onClick={handleEditCategoryName}>
+        {headerInput ? (
+          <NotesHeaderForm onSubmit={handleSubmit}>
+            <NotesHeaderInput
+              value={userInputCategory}
+              onChange={handleCategoryChange}
+              onBlur={handleSubmit}
+              ref={inputRef}
+            />
+            {sameNameError && (
+              <NotesHeaderError>Names can't be the same</NotesHeaderError>
+            )}
+          </NotesHeaderForm>
+        ) : (
+          <NotesHeader>
+            {addDotsInTheEndOfLongText(userInputCategory, 30)}
+          </NotesHeader>
+        )}
+      </NotesHeaderWrapper>
+      {!headerInput && (
+        <Tippy content="Edit category">
+          <NotesHeaderEdit
+            onClick={handleEditCategoryName}
+            aria-label="edit category"
+            whileHover={{ opacity: 0.8 }}
+            transition={{ duration: 0.2 }}
+          >
             <SvgIcon color={colors.dark} size={"20px"}>
               <IoMdCreate className="edit-icon" />
             </SvgIcon>
-          )}
-        </NotesHeaderEdit>
-      </Tippy>
-    </NotesHeaderWrapper>
+          </NotesHeaderEdit>
+        </Tippy>
+      )}
+    </>
   );
 };
 

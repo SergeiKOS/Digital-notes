@@ -4,11 +4,10 @@ import { colors } from "../../../commonStyles/variables";
 
 export const NotesHeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex-grow: 1;
   padding: 0;
   margin: 0;
   height: 33px;
+  width: 246px;
 
   &:hover {
     cursor: pointer;

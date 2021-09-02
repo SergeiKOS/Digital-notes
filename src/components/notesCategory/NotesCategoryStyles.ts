@@ -19,7 +19,7 @@ export const NotesCategoryContainer = styled.div`
 
   & .notes-category-container-header {
     display: flex;
-    gap: 5px;
+    justify-content: space-between;
     margin-bottom: 5px;
     padding-right: 10px;
     padding-left: 2px;
