@@ -117,7 +117,8 @@ const NoteEditor = () => {
       setNotes(notesCopy);
       setFlagForStats(false);
     }
-  }, [currentNoteEditorState]);
+  }, [currentNoteEditorState]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const handleSave = (): void => {
     setFlagForStats(true);
 

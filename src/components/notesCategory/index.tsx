@@ -1,11 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
-import SvgIcon from "../SvgIcon";
 import GlobalContext from "../../GlobalContext";
 import NotesCategoryName from "./notesCategoryName";
 import {
