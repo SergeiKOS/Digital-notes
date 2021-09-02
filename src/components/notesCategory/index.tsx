@@ -11,7 +11,6 @@ import NotesCategoryName from "./notesCategoryName";
 import {
   NotesCategoryContainer,
   NotesWrapper,
-  CollapseCategory,
   AddNote,
   NotesItemLink,
 } from "./NotesCategoryStyles";
@@ -19,7 +18,6 @@ import NotesItem from "./notesItem";
 
 const NotesCategory = ({ category }: any) => {
   const { notes, setNotes } = useContext(GlobalContext);
-  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const getNotesFromCategory = () => {
     let notesCopy = [...notes];
@@ -32,10 +30,6 @@ const NotesCategory = ({ category }: any) => {
       return false;
     });
     return [...notesCopy];
-  };
-
-  const handleCategoryCollapse = () => {
-    setIsCollapsed(!isCollapsed);
   };
 
   const handleAddNote = () => {
@@ -56,24 +50,11 @@ const NotesCategory = ({ category }: any) => {
         },
       },
     ]);
-
-    setIsCollapsed(false);
   };
 
   return (
     <NotesCategoryContainer>
       <div className="notes-category-container-header">
-        <Tippy content={`${!isCollapsed ? "Collapse" : "Uncollapse"} category`}>
-          <CollapseCategory
-            onClick={handleCategoryCollapse}
-            type="button"
-            aria-label="Collapse category"
-          >
-            <SvgIcon size={"20px"}>
-              {!isCollapsed ? <IoIosArrowUp /> : <IoIosArrowDown />}
-            </SvgIcon>
-          </CollapseCategory>
-        </Tippy>
         <NotesCategoryName category={category} />
         <Tippy content="Add note">
           <AddNote onClick={handleAddNote} aria-label="add note">
@@ -81,15 +62,13 @@ const NotesCategory = ({ category }: any) => {
           </AddNote>
         </Tippy>
       </div>
-      {!isCollapsed && (
-        <NotesWrapper>
-          {getNotesFromCategory().map((note) => (
-            <NotesItemLink to={`/edit-note/${note.id}`} key={note.id}>
-              <NotesItem notesItem={note} />
-            </NotesItemLink>
-          ))}
-        </NotesWrapper>
-      )}
+      <NotesWrapper>
+        {getNotesFromCategory().map((note) => (
+          <NotesItemLink to={`/edit-note/${note.id}`} key={note.id}>
+            <NotesItem notesItem={note} />
+          </NotesItemLink>
+        ))}
+      </NotesWrapper>
     </NotesCategoryContainer>
   );
 };

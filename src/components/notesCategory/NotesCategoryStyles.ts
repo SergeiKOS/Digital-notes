@@ -40,20 +40,6 @@ export const NotesItemLink = styled(Link)`
   }
 `;
 
-export const CollapseCategory = styled.button`
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: color 0.2s;
-
-  &:hover {
-    color: ${colors.grayHover};
-  }
-
-  &:focus {
-    outline: 2px solid ${colors.dark};
-  }
-`;
 export const AddNote = styled.button`
   border: none;
   background-color: transparent;
