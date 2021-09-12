@@ -15,7 +15,7 @@ export const getDate = (creationDate: string) => {
       "November",
       "December",
     ];
-    const monthNumber = newCreationDate.getUTCMonth() + 1;
+    const monthNumber = newCreationDate.getUTCMonth();
     const monthName = monthNames[monthNumber];
     const day = newCreationDate.getUTCDate();
     const year = newCreationDate.getUTCFullYear();
