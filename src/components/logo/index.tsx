@@ -1,16 +1,16 @@
 import ILogo from "./ILogo.interface";
 import { LogoType, LogoLink } from "./LogoStyles";
 // @ts-ignore
-import { ReactComponent as Logotype } from "./dn-logo.svg";
+import { ReactComponent as LogoSvg } from "./dn-logo.svg";
 
 const Logo = ({ mainPage }: ILogo) => {
   return (
-    <LogoType aria-label="Digital notes logo">
+    <LogoType>
       {mainPage ? (
-        <Logotype />
+        <LogoSvg aria-label="Digital notes logo" />
       ) : (
         <LogoLink to="/">
-          <Logotype />
+          <LogoSvg aria-label="Digital notes logo" />
         </LogoLink>
       )}
     </LogoType>
