@@ -208,7 +208,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   min-height: 700px;
   margin-right: auto;
   margin-left: auto;
@@ -816,10 +816,6 @@
     background-color: #91b39a;
   }
 
-  .hero {
-    min-height: 600px;
-  }
-
   .svg-wrapper {
     display: none;
   }
@@ -991,8 +987,6 @@
   }
 
   .hero {
-    height: auto;
-    min-height: auto;
     padding-bottom: 40px;
   }
 
@@ -1123,7 +1117,6 @@
   }
 
   .hero {
-    height: 60vh;
     margin-bottom: 0px;
   }
 

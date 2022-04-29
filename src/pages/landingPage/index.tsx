@@ -68,8 +68,8 @@ const LandingPage = () => {
                 Fast, accessible, and easy to use app for taking notes
               </h1>
               <p className="paragraph">
-                You can use Digital Notes out for absolutely free. Just click
-                the link below:
+                You can use Digital Notes for absolutely free. Just click the
+                link below:
               </p>
               <a href="/app" className="hero-get-started">
                 Get Started
