@@ -150,7 +150,7 @@ const NoteEditor = () => {
   };
 
   if (redirect) {
-    return <Redirect to="/" />;
+    return <Redirect to="/app" />;
   } else if (!currentNoteEditorState) {
     return <Redirect to="/not-found" />;
   } else {

@@ -7,6 +7,7 @@ import GlobalContext from "./GlobalContext";
 import NotFound from "./pages/notFound";
 import NotesCategories from "./pages/notesCategories";
 import EditNote from "./pages/editNote";
+import LandingPage from "./pages/landingPage";
 
 const initialState: Note[] = [
   {
@@ -59,6 +60,9 @@ const App = () => {
           <NotFound />
         </Route>
         <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route exact path="/app">
           <NotesCategories />
         </Route>
         <Redirect to="/not-found" />
